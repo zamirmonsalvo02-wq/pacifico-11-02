@@ -1,0 +1,3153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Región Pacífica de Colombia | Colombia en la Web</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- VARIABLES Y CONFIGURACIÓN GENERAL --- */
+        :root {
+            --bg-dark: #071e16;
+            --bg-card: rgba(12, 38, 28, 0.85);
+            --primary-jungle: #114232;
+            --accent-green: #279655;
+            --ocean-blue: #0f4c81;
+            --ocean-turquoise: #00a896;
+            --sand-gold: #f4a261;
+            --text-light: #f8f9fa;
+            --text-muted: #d1d5db;
+            --border-glow: rgba(0, 168, 150, 0.4);
+            --radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .brand-logo {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* --- NAVEGACIÓN SUPERIOR FIJA --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(7, 30, 22, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-glow);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .contenedor-pdf { width: 100vw; height: 100vh; }
+
+        .brand-logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--ocean-turquoise);
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+        }
+
+        .nav-links a:hover {
+            color: var(--sand-gold);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- ESTILOS DE SECCIONES GENERALES --- */
+        section {
+            padding: 6rem 2rem 4rem 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--text-light);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #ffffff, var(--ocean-turquoise));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--sand-gold);
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--sand-gold);
+            box-shadow: 0 15px 35px rgba(0, 168, 150, 0.2);
+        }
+
+        /* --- PLACEHOLDERS EDITABLES Y EMBEDS --- */
+        .editable-placeholder {
+            border: 2px dashed var(--ocean-turquoise);
+            background: rgba(0, 168, 150, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .editable-placeholder label {
+            display: block;
+            font-weight: 700;
+            color: var(--sand-gold);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .embed-container {
+            width: 100%;
+            min-height: 350px;
+            background: rgba(0,0,0,0.4);
+            border: 2px dashed var(--sand-gold);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            margin: 1.5rem 0;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--ocean-turquoise), var(--accent-green));
+            color: var(--text-light);
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 168, 150, 0.4);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, var(--sand-gold), var(--accent-green));
+            box-shadow: 0 6px 20px rgba(244, 162, 97, 0.5);
+        }
+
+        /* --- PORTADA / HERO --- */
+        #inicio {
+            min-height: 100vh;
+            max-width: 100%;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to bottom, rgba(7,30,22,0.85), var(--bg-dark));
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            padding: 7rem 2rem 4rem 2rem;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.8);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #ffffff, var(--ocean-turquoise));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--sand-gold);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            font-style: italic;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .hero-image-box {
+            margin: 2rem 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 2px solid var(--border-glow);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+            max-width: 400px;
+        }
+
+        .hero-image-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .hero-meta-box {
+            background: rgba(7, 30, 22, 0.85);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            text-align: left;
+        }
+
+        .meta-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-glow);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .meta-badge {
+            background: var(--ocean-turquoise);
+            color: #000;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .integrantes-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.8rem;
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .integrantes-list li {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--ocean-turquoise);
+            font-size: 0.95rem;
+        }
+
+        .hero-intro-text {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-top: 1.5rem;
+            text-align: justify;
+        }
+
+        /* --- MULTIMEDIA PLAYERS --- */
+        .media-player-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #030e0a;
+            border-top: 1px solid var(--border-glow);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            text-align: left;
+        }
+
+        .img-box {
+            position: relative; 
+            border: #00a896 dashed 2px;
+            border-radius: 10%; 
+            max-width: 260px;"
+        }
+
+        .box-imagen{
+            max-width: 1100px;
+            max-height: 600px;
+            margin: 2rem 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 2px solid var(--border-glow);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .hero-title { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGACIÓN SUPERIOR FIJA -->
+    <header>
+        <div class="nav-container">
+            <a href="#inicio" class="brand-logo">Pacífico Colombiano</a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#ubicacion">¿Dónde está?</a></li>
+                <li><a href="#fisica">Física</a></li>
+                <li><a href="#humana">Humana</a></li>
+                <li><a href="#cultura">Cultura</a></li>
+                <li><a href="#economica">Económica</a></li>
+                <li><a href="#problematicas">Problemáticas</a></li>
+                <li><a href="#multimedia">Multimedia</a></li>
+                <li><a href="#actividades">Actividades</a></li>
+                <li><a href="#explorando">Explorar</a></li>
+                <li><a href="#fuentes">Fuentes</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- PORTADA / HERO (SECCIÓN 1) -->
+    <section id="inicio">
+        <div class="hero-content">
+            <h1 class="hero-title">REGIÓN PACÍFICA DE COLOMBIA</h1>
+            <p class="hero-subtitle">“Donde la selva se abraza con el mar, late el corazón biodiverso y ancestral de Colombia.”</p>
+            
+            <!-- IMAGEN REPRESENTATIVA INCLUIDA -->
+            <div class="grid-cards">
+                
+                    <div class="hero-image-box"><img src="imagen/imagen representativa.jfif" alt="Imagen Representativa de la Región Pacífica de Colombia: Ballenas jorobadas, marimba y mapa de ubicación"></div>
+              
+
+                
+                    <div class="hero-image-box"><img src="imagen/mapa.jfif" alt="mapa"></div>
+                
+            </div>
+
+            <div class="hero-meta-box">
+                <div class="meta-header">
+                    <div>
+                        <span class="meta-badge">Grado 11-02</span>
+                        <span class="meta-badge" style="background: var(--sand-gold); margin-left: 0.5rem;">Área: Ciencias Sociales</span>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Proyecto: <em>Colombia en la Web</em></p>
+                </div>
+
+                <h4 style="color: var(--sand-gold); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Integrantes del Grupo:</h4>
+                <ul class="integrantes-list">
+                    <li>Emmanuel Monsalvo</li>
+                    <li>Keren Orellano</li>
+                    <li>Violeta Fuenmayor</li>
+                    <li>Cristina Díaz</li>
+                    <li>Dayana Morales</li>
+                    <li>Javid Maldonado</li>
+                    <li>Andrés Jaraba</li>
+                </ul>
+
+                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 1.5rem 0;">
+
+                <h4 style="color: var(--ocean-turquoise); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 0.5rem;">Presentación Breve de la Región:</h4>
+                <p class="hero-intro-text">
+                    La Región Pacífica se localiza en la franja occidental de Colombia, abarcando los departamentos de Chocó, Valle del Cauca, Cauca y Nariño. Se caracteriza por ser una de las zonas con mayor biodiversidad y pluviosidad del planeta, albergando densas selvas tropicales, ríos caudalosos como el Atrato y el San Juan, y extensas costas sobre el Océano Pacífico.<br><br>
+                    Además de su riqueza natural, es un territorio fundamental para el patrimonio cultural del país, habitado principalmente por comunidades afrodescendientes e indígenas con profundas tradiciones ancestrales, reflejadas en su gastronomía, su música tradicional (como los ritmos de marimba) y expresiones declaradas Patrimonio de la Humanidad.
+                </p>
+            </div>
+
+            <a href="#ubicacion" class="btn">EXPLORAR EL PACÍFICO</a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2: ¿DÓNDE ESTÁ EL PACÍFICO? -->
+    <section id="ubicacion">
+        <h2 class="section-title">ENTRE SELVA, RÍOS Y OCÉANO</h2>
+        <p class="section-subtitle">Ubicación y Delimitación Territorial</p>
+        
+        <div class="grid-cards">
+            <div class="card">
+                <div class="editable-placeholder">
+                    <label><h3>Ubicación Geográfica y Límites</h3></label>
+                    <p>La región Pacífica se ubica en la franja oeste de Colombia.  Limita al norte con Panamá, al noreste con la región Caribe, al este con la Cordillera Occidental (que la separa de la región Andina), al sur con Ecuador y al oeste con el océano Pacífico.  Su superficie supera los 83.000 km^2 y posee más de 1.000 km de costa oceánica.  </p>
+                </div>
+                <div class="editable-placeholder">
+                    <label><h3>Departamentos Conformantes</h3></label>
+                    <p><h4>Chocó:</h4> Único departamento con el 90% de su territorio dentro de la región y el único del país con costas en dos océanos. Sus ciudades principales son Quibdó, Alto Baudó y Medio Atrato.  </p>
+                    <p> <h4>Antioquia:</h4> Participa con dos municipios en la región: Murindó y Vigía del Fuerte. </p>
+                    <p> <h4>Valle del Cauca:</h4> Aporta los municipios de Buenaventura (donde se ubica uno de los puertos marítimos más importantes del país) y Dagua.  </p>
+                    <p> <h4>Cauca:</h4> Incluye los municipios de Guapi, López de Micay y Timbiquí.  </p>
+                    <p> <h4>Nariño:</h4> Incluye las subregiones del Pacífico Sur, Sanquianga y Telembí.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="embed-container">
+            <div>
+                <h3>[MAPA INTERACTIVO DE UBICACIÓN]</h3>
+                <!-- INICIO: MAPA INTERACTIVO Y ESTILOS DE LA SECCIÓN 2 -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<style>
+  :root {
+    --primary: #1b4332;
+    --secondary: #2d6a4f;
+    --accent: #52b788;
+    --bg-panel: #f1f8f5;
+  }
+
+  .contenedor-mapa-seccion {
+    max-width: 100%;
+    margin: 25px 0;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  }
+
+  .contenedor-mapa-seccion h3 {
+    color: var(--primary);
+    margin-top: 0;
+  }
+
+  .mapa-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .mapa-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  #mapa-pacifico {
+    height: 550px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 1;
+  }
+
+  .panel-puntos {
+    background: var(--bg-panel);
+    padding: 15px;
+    border-radius: 8px;
+    max-height: 520px;
+    overflow-y: auto;
+  }
+
+  .panel-puntos h4 {
+    margin: 10px 0 5px 0;
+    color: var(--primary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-punto {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: #ffffff;
+    border: 1px solid #d8f3dc;
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    transition: all 0.2s ease;
+  }
+
+  .btn-punto:hover {
+    background: var(--accent);
+    color: #ffffff;
+  }
+
+  .popup-titulo {
+    font-weight: bold;
+    color: var(--primary);
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+  }
+
+  .popup-sub {
+    font-size: 0.82rem;
+    color: #555;
+    margin-bottom: 6px;
+  }
+
+  .popup-contenido {
+    font-size: 0.88rem;
+    line-height: 1.4;
+  }
+</style>
+
+<div class="contenedor-mapa-seccion">
+  <h3>Mapa Interactivo de Geografía Física y Biodiversidad</h3>
+  <p>Haz clic en las categorías laterales o sobre los puntos del mapa para explorar la información investigada[cite: 2].</p>
+
+  <div class="mapa-grid">
+    <div id="mapa-pacifico"></div>
+
+    <div class="panel-puntos">
+      <h4>Geografía y Departamentos</h4>
+      <button class="btn-punto" onclick="centrarEn(5.6947, -76.6611, 8)">📍 Chocó y Serranía del Baudó</button>
+      <button class="btn-punto" onclick="centrarEn(3.8801, -77.0312, 9)">📍 Valle del Cauca (Buenaventura)</button>
+      <button class="btn-punto" onclick="centrarEn(2.5686, -77.8839, 9)">📍 Cauca (Guapi y Litoral)</button>
+      <button class="btn-punto" onclick="centrarEn(1.8058, -78.7619, 9)">📍 Nariño (Tumaco y Telembí)</button>
+
+      <h4>Hidrografía y Clima</h4>
+      <button class="btn-punto" onclick="centrarEn(6.8000, -76.9000, 8)">🌊 Río Atrato y Golfo de Urabá</button>
+      <button class="btn-punto" onclick="centrarEn(4.2000, -77.2000, 8)">🌊 Río San Juan</button>
+      <button class="btn-punto" onclick="centrarEn(5.5000, -76.5400, 10)">🌧️ Lloró (Punto más lluvioso)</button>
+
+      <h4>Áreas Protegidas y Ecosistemas</h4>
+      <button class="btn-punto" onclick="centrarEn(2.9656, -78.1792, 11)">🌿 PNN Gorgona</button>
+      <button class="btn-punto" onclick="centrarEn(3.9786, -81.5906, 8)">🦈 SFF Malpelo</button>
+      <button class="btn-punto" onclick="centrarEn(3.9667, -77.3500, 10)">🐋 PNN Uramba Bahía Málaga</button>
+      <button class="btn-punto" onclick="centrarEn(6.0100, -77.3500, 10)">🍃 PNN Utría</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+  const map = L.map('mapa-pacifico').setView([4.5, -77.5], 7);
+
+  // SERVIDOR CARTO (Libre de bloqueos 403)
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap &copy; CARTO'
+  }).addTo(map);
+
+  const datosSeccion2 = [
+    {
+      coords: [5.6947, -76.6611],
+      titulo: "Departamento del Chocó",
+      subtitulo: "Ubicación, Relieve y Municipios",
+      contenido: `<p><strong>Generalidades:</strong> 90% de su área en la región y costas en dos océanos[cite: 2]. Ciudades: Quibdó, Alto Baudó y Medio Atrato[cite: 2].</p>
+                  <p><strong>Relieve:</strong> Serranía del Baudó (0 - 500 m s. n. m.) y el río Baudó (150 km)[cite: 2].</p>`
+    },
+    {
+      coords: [3.8801, -77.0312],
+      titulo: "Valle del Cauca (Buenaventura)",
+      subtitulo: "Puerto e Hidrografía",
+      contenido: `<p><strong>Municipios:</strong> Buenaventura y Dagua[cite: 2]. Alberga el principal puerto comercial del Pacífico colombiano[cite: 2].</p>
+                  <p><strong>Ríos:</strong> Dagua (101 km) y Anchicayá (100 km), clave para generación hidroeléctrica[cite: 2].</p>`
+    },
+    {
+      coords: [2.5686, -77.8839],
+      titulo: "Cauca (Zona Costera)",
+      subtitulo: "Guapi, López de Micay y Timbiquí",
+      contenido: `<p>Comprende estos municipios costeros ricos en manglares que aportan unas 10 toneladas de hojarasca por hectárea al año a la red trófica marina[cite: 2].</p>`
+    },
+    {
+      coords: [1.8058, -78.7619],
+      titulo: "Nariño (Pacífico Sur)",
+      subtitulo: "Subregiones y Río Mira",
+      contenido: `<p><strong>Subregiones:</strong> Pacífico Sur, Sanquianga y Telembí[cite: 2].</p>
+                  <p><strong>Río Mira:</strong> 328 km de extensión (nace en Ecuador como río Chota), abastece a Tumaco[cite: 2].</p>`
+    },
+    {
+      coords: [6.8000, -76.9000],
+      titulo: "Río Atrato",
+      subtitulo: "612 km de Longitud",
+      contenido: `<p>Nace en el Cerro del Plateado y desemboca en el Golfo de Urabá[cite: 2]. Una de las arterias fluviales más caudalosas del planeta respecto a su cuenca[cite: 2].</p>`
+    },
+    {
+      coords: [4.2000, -77.2000],
+      titulo: "Río San Juan",
+      subtitulo: "380 km de Longitud",
+      contenido: `<p>Nace en el Nudo del Paramillo y recorre Chocó y Valle del Cauca[cite: 2]. Es el río más caudaloso de Sudamérica hacia la vertiente del Pacífico[cite: 2].</p>`
+    },
+    {
+      coords: [5.5000, -76.5400],
+      titulo: "Lloró (Chocó)",
+      subtitulo: "Récord de Precipitaciones",
+      contenido: `<p>Segundo lugar más lluvioso del mundo[cite: 2]. Lluvias de 3.000 mm a 16.000 mm anuales sin estación seca[cite: 2].</p>
+                  <p><strong>Pisos térmicos:</strong> 76% cálido (>25 °C), 16% medio (15-25 °C) y 8% frío (7-15 °C)[cite: 2].</p>`
+    },
+    {
+      coords: [2.9656, -78.1792],
+      titulo: "PNN Gorgona",
+      subtitulo: "Reserva Insular",
+      contenido: `<p>Parque Nacional Natural con ecosistemas marinos y terrestres hiperdiversos[cite: 2].</p>`
+    },
+    {
+      coords: [3.9786, -81.5906],
+      titulo: "SFF Malpelo",
+      subtitulo: "Santuario de Fauna y Flora",
+      contenido: `<p>Hábitat de biodiversidad pelágica: cachalotes, tiburones y el Alcatraz de Nazca[cite: 2].</p>`
+    },
+    {
+      coords: [3.9667, -77.3500],
+      titulo: "PNN Uramba Bahía Málaga",
+      subtitulo: "Avistamiento de Ballenas",
+      contenido: `<p>Refugio de crianza de la ballena jorobada (julio a noviembre)[cite: 2]. Hábitat de especies amenazadas como el jaguar, oso hormiguero y tití cabeciblanco[cite: 2].</p>`
+    },
+    {
+      coords: [6.0100, -77.3500],
+      titulo: "PNN Utría",
+      subtitulo: "Manglares y Flora",
+      contenido: `<p>Protege los 4 tipos de manglar (rojo, negro, blanco y piñuelo) y árboles en riesgo como la caoba de hoja grande[cite: 2].</p>`
+    }
+  ];
+
+  const listaMarcadores = [];
+
+  datosSeccion2.forEach((punto) => {
+    const marker = L.marker(punto.coords).addTo(map);
+    const contenidoHTML = `
+      <div class="popup-titulo">${punto.titulo}</div>
+      <div class="popup-sub">${punto.subtitulo}</div>
+      <div class="popup-contenido">${punto.contenido}</div>
+    `;
+    marker.bindPopup(contenidoHTML);
+    listaMarcadores.push({ coords: punto.coords, marker: marker });
+  });
+
+  function centrarEn(lat, lng, zoom) {
+    map.flyTo([lat, lng], zoom, { duration: 1.2 });
+    const match = listaMarcadores.find(m => m.coords[0] === lat && m.coords[1] === lng);
+    if (match) {
+      setTimeout(() => { match.marker.openPopup(); }, 1000);
+    }
+  }
+</script>
+<!-- FIN: MAPA INTERACTIVO -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: GEOGRAFÍA FÍSICA -->
+    <section id="fisica">
+        <h2 class="section-title">UN TERRITORIO HECHO DE AGUA Y SELVA</h2>
+        <p class="section-subtitle">Geografía Física y Ecosistemas</p>
+
+        
+            <div class="card">
+                <h3>Relieve</h3>
+                <div class="editable-placeholder">
+                    <label> Se divide en dos bloques principales: el Litoral Pacífico y la Zona Andina, abarcando un ancho de 10 a 200 km desde el nivel del mar hasta las alturas andinas.</label>
+                    <p><h3>Litoral Pacífico:</h3>Margen costero caracterizado por territorios a nivel del mar, colinas bajas, valles de ríos y serranías de altura media en el norte como la Serranía del Baudó (a 500 MS.N.M.).</p>
+                    <p><h3>Zona Andina:</h3>Definida por la Cordillera Occidental, cuya altura máxima alcanza los 4.200 MS.N.M.</p>
+                </div>
+                <div class="editable-placeholder"><img src="imagen/relieve.png" alt="relieve pacifico"></div>
+            </div>
+
+            <div class="card">
+                <h3>Clima</h3>
+                <div class="editable-placeholder">
+                    <label>Impera el clima tropical húmedo sin estación seca, siendo una de las regiones más lluviosas del mundo.</label>
+                    <p>Las precipitaciones anuales van desde los 3.000 mm hasta los 16.000 mm. La cuenca del río Naya registra hasta 13.000 mm al año, mientras que el municipio de Lloró es considerado el segundo lugar más lluvioso del planeta.</p>
+                    <p>Se clasifican precipitaciones de tipo subpluvial 730 a 2.025 mm al año y superpluvial 12.300 a 13.600 mm al año</p>
+                    <p>La temperatura promedio anual oscila entre 26 °C y casi 40 °C en el norte, mientras que el sur registra entre 25 °C y $26 °C.</p>
+                    <p>Distribución térmica del territorio: 76% clima cálido 25 °C, 16% clima medio 15 a 25 °C y 8% clima frío 7 a 15 °C.</p>
+                    <p>La mayor humedad relativa (casi 100%) ocurre entre agosto y junio.</p>
+                </div>
+                <div class="editable-placeholder">
+                    <!-- CÓDIGO DEL GRÁFICO CLIMÁTICO (CHART.JS) -->
+<style>
+  .contenedor-grafico-clima {
+    max-width: 600px;
+    margin: 25px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  .contenedor-grafico-clima h4 {
+    color: #1b4332;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+  }
+
+  .contenedor-grafico-clima p {
+    color: #555;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+  }
+
+  .canvas-box {
+    position: relative;
+    max-height: 320px;
+    margin: 0 auto;
+  }
+
+  .tarjetas-resumen-clima {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .tarjeta-clima {
+    background: #f1f8f5;
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 4px solid #2d6a4f;
+  }
+
+  .tarjeta-clima span {
+    display: block;
+    font-size: 0.75rem;
+    color: #666;
+    text-transform: uppercase;
+  }
+
+  .tarjeta-clima strong {
+    font-size: 0.95rem;
+    color: #1b4332;
+  }
+</style>
+
+<div class="contenedor-grafico-clima">
+  <h4>Distribución Térmica del Territorio</h4>
+  <p>Porcentaje de clima por región y datos pluviales clave</p>
+
+  <!-- Canvas donde se dibuja el gráfico -->
+  <div class="canvas-box">
+    <canvas id="graficoPisosTermicos"></canvas>
+  </div>
+
+  <!-- Tarjetas informativas de complemento -->
+  <div class="tarjetas-resumen-clima">
+    <div class="tarjeta-clima">
+      <span>Precipitación Anual</span>
+      <strong>3.000 - 16.000 mm</strong>
+    </div>
+    <div class="tarjeta-clima">
+      <span>Río Naya</span>
+      <strong>13.000 mm/año</strong>[cite: 2]
+    </div>
+    <div class="tarjeta-clima">
+      <span>Humedad Relativa</span>
+      <strong>~100% (Ago - Jun)</strong>[cite: 2]
+    </div>
+  </div>
+</div>
+
+<!-- Librería Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctxClima = document.getElementById('graficoPisosTermicos').getContext('2d');
+
+  new Chart(ctxClima, {
+    type: 'doughnut',
+    data: {
+      labels: [
+        'Clima Cálido (>25 °C)', 
+        'Clima Medio (15 - 25 °C)', 
+        'Clima Frío (7 - 15 °C)'
+      ],
+      datasets: [{
+        data: [76, 16, 8], // Porcentajes extraídos del informe
+        backgroundColor: [
+          '#d90429', // Rojo/Cálido
+          '#ffb703', // Amarillo/Medio
+          '#2a9d8f'  // Verde-Azul/Frío
+        ],
+        borderWidth: 2,
+        borderColor: '#ffffff'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            boxWidth: 14,
+            font: { size: 12 }
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return ` ${context.label}: ${context.raw}% del territorio`;
+            }
+          }
+        }
+      }
+    }
+  });
+</script>
+<!-- FIN CÓDIGO DEL GRÁFICO -->
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Hidrografía</h3>
+                <div class="editable-placeholder">
+                    <label>Cuencas Hidrográficas</label>
+                    <p><h3>Río Atrato (612 km): </h3> Principal vía de navegación regional y uno de los más caudalosos del mundo respecto a su cuenca. Nace en el Cerro del Plateado y desemboca en el Golfo de Urabá.</p>
+                    <p><h3>Río San Juan (380 km): </h3>Río más caudaloso de Sudamérica entre los que vierten al Pacífico. Nace en el Nudo del Paramillo y recorre Chocó y Valle del Cauca.</p>
+                    <p><h3>Río Baudó (150 Km): </h3>Exclusivo del Chocó, nace en la Serranía del Baudó y fluye paralelo a la costa.</p>
+                    <p><h3>Río Mira (328 km): </h3> Nace en Ecuador (como río Chota) y recorre el sur de Nariño. Vital para el transporte e insumos en la zona fronteriza y Tumaco.</p>
+                    <p><h3>Ríos Dagua (101 km) y Anchicayá (100 km): </h3> Ubicados en el Valle del Cauca, fundamentales para la generación de energía hidroeléctrica y la conexión ecológica con Buenaventura.</p>
+                    <p><h3>Impacto ecológico: </h3>Las redes hidrográficas moldean la línea costera mediante la acumulación de sedimentos en deltas y estuarios, regulando además los ecosistemas selváticos.</p>
+                </div>
+                <div class="editable-placeholder"><img src="imagen/hidrografia pacifica.png" alt="hidrografia pacifica"></div>
+            </div>
+
+            <div class="card">
+                <h3>Biodiversidad y Ecosistemas</h3>
+                <div class="editable-placeholder">
+                    <label>Tipos de Ecosistemas</label>
+                    <p><h3>Manglares y Playas: </h3>Playas de arena y lodo que se extienden por más de 550 km. Los manglares generan cerca de 10 toneladas de hojarasca por hectárea al año, nutriendo la cadena alimenticia marina.</p>
+                    <p><h3>Selvas Tropicales: </h3>Albergan árboles gigantes como el ceibo y la palma de cera, junto a variedad de orquídeas y bromelias.</p>
+                </div>
+                
+            </div>
+        </div>
+
+        <h3 style="margin-top: 3rem; text-align: center; color: var(--sand-gold);">BIODIVERSIDAD DESTACADA</h3>
+        
+            <div class="card">
+                <h4 style="text-align: center;">Flora</h4>
+                <div class="editable-placeholder"><p>Destacan 4 tipos de manglares (rojo, negro, blanco y piñuelo), además de palmeras, bromelias, helechos, fresco, abarco y la caoba de hoja grande (en peligro de extinción).</p></div>
+            </div>
+            <div class="card">
+                <h4 style="text-align: center;"> Fauna</h4>
+                <div class="editable-placeholder">
+                    <p><h3>Especies acuáticas: </h3>Ballenas jorobadas (visitan la costa entre julio y noviembre), cachalotes, tiburones, camarones y cangrejos.</p>
+                    <p><h3>Especies terrestres y anfibios: </h3>Jaguar, tigrillo, jabalí, oso perezoso, oso hormiguero, águila harpía, caimán de agua dulce, Alcatraz de Nazca y la rana dardo dorada venenosa.</p>
+                </div>
+            </div>
+            <div class="card">
+                <h4 style="text-align: center;">Especies Endémicas</h4>
+                <div class="editable-placeholder">
+                    <p><h3>Rana dardo dorada (Phyllobates terribilis): </h3> Es el animal más venenoso del mundo y vive únicamente en las selvas tropicales del Pacífico.</p>
+                        <img class="img-box"  src="imagen/rana dardo dorada.webp" alt="rana dardo dorada">
+                    <p><h3>Rana histriónica (Oophaga histriónica): </h3>Una rana venenosa de colores muy llamativos propia de los bosques húmedos.</p>
+                        <img class="img-box" src="imagen/rana histrionica.webp" alt="rana histrionica">
+                    <p><h3>Rana arlequín (Atelopus spurrelli): </h3>Una especie de anfibio endémica de la zona.</p>
+                        <img class="img-box" src="imagen/rana arlequin.jfif" alt="rana arlequin">
+                    <p><h3>Lagarto azul de Gorgona (Anolis gorgonae): </h3> Un lagarto de color azul brillante que habita exclusivamente en la Isla Gorgona.</p>
+                     <img class="img-box" src="imagen/lagarto azul de gorgona.webp" alt="lagarto azul de gorgona">
+                </div>
+            </div>
+            <div class="card">
+                <h4 style="text-align: center;">Especies Amenazadas</h4>
+                <div class="editable-placeholder">
+                    <p>jaguar (caza por piel/huesos y deforestación)</p>
+                    <img class="img-box" src="imagen/jaguar.jpeg" alt="jaguar">
+                    <p>Oso Hormiguero (caza por carne/piel y pérdida de hábitat)</p>
+                    <img class="img-box" src="imagen/oso hormigero.jpeg" alt="oso hormigero">
+                    <p>Mono Aullador y Tití Cabeciblanco (caza ilegal y fragmentación forestal)</p>
+                    <img style="position: relative; border: #00a896 dashed 2px;border-radius: 10%; max-width: 360px;" src="imagen/mono y titi.jpeg" alt="mono y titi">
+                </div>
+            </div>
+        
+
+        <div class="embed-container" style="margin-top: 2rem;">
+            <div>
+                <!-- INICIO: MAPA INTERACTIVO COMPLETO DE GEOGRAFÍA Y BIODIVERSIDAD -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<style>
+  :root {
+    --primary-color: #1b4332;
+    --secondary-color: #2d6a4f;
+    --accent-color: #52b788;
+    --panel-bg: #f1f8f5;
+  }
+
+  .contenedor-mapa-bio {
+    max-width: 100%;
+    margin: 25px 0;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    font-family: Arial, sans-serif;
+  }
+
+  .contenedor-mapa-bio h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+  }
+
+  .mapa-grid-bio {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .mapa-grid-bio {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  #mapa-pacifico-bio {
+    height: 580px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 1;
+  }
+
+  .panel-puntos-bio {
+    background: var(--panel-bg);
+    padding: 15px;
+    border-radius: 8px;
+    max-height: 550px;
+    overflow-y: auto;
+  }
+
+  .panel-puntos-bio h4 {
+    margin: 12px 0 6px 0;
+    color: var(--primary-color);
+    font-size: 0.88rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 2px;
+  }
+
+  .btn-punto-bio {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: #ffffff;
+    border: 1px solid #d8f3dc;
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+  }
+
+  .btn-punto-bio:hover {
+    background: var(--accent-color);
+    color: #ffffff;
+  }
+
+  .popup-bio-titulo {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+  }
+
+  .popup-bio-sub {
+    font-size: 0.82rem;
+    color: #555;
+    margin-bottom: 6px;
+  }
+
+  .popup-bio-contenido {
+    font-size: 0.88rem;
+    line-height: 1.4;
+  }
+
+  .popup-bio-contenido ul {
+    padding-left: 15px;
+    margin: 4px 0;
+  }
+</style>
+
+<div class="contenedor-mapa-bio">
+  <h3>Mapa Interactivo: Geografía Física, Ecosistemas y Biodiversidad</h3>
+  <p>Explora la geografía física, los tipos de ecosistemas, la flora, la fauna marina/terrestre, especies endémicas y especies en peligro de extinción[cite: 2].</p>
+
+  <div class="mapa-grid-bio">
+    <div id="mapa-pacifico-bio"></div>
+
+    <div class="panel-puntos-bio">
+      <h4>Geografía Física y Litoral</h4>
+      <button class="btn-punto-bio" onclick="centrarMapaBio(5.6947, -76.6611, 8)">⛰️ Serranía del Baudó y Chocó</button>
+      <button class="btn-punto-bio" onclick="centrarMapaBio(3.8801, -77.0312, 9)">⚓ Puerto de Buenaventura y Dagua</button>
+      <button class="btn-punto-bio" onclick="centrarMapaBio(1.8058, -78.7619, 9)">🌊 Pacífico Sur y Río Mira</button>
+
+      <h4>Ríos e Hidrografía</h4>
+      <button class="btn-punto-bio" onclick="centrarMapaBio(6.8000, -76.9000, 8)">🌊 Cuenca del Río Atrato</button>
+      <button class="btn-punto-bio" onclick="centrarMapaBio(4.2000, -77.2000, 8)">🌊 Río San Juan y Cuenca</button>
+
+      <h4>Ecosistemas, Flora y Fauna</h4>
+      <button class="btn-punto-bio" onclick="centrarMapaBio(2.5686, -77.8839, 9)">🌱 Manglares y Playones (Cauca)</button>
+      <button class="btn-punto-bio" onclick="centrarMapaBio(3.9667, -77.3500, 10)">🐋 Bahía Málaga (Ballenas y Fauna)</button>
+      <button class="btn-punto-bio" onclick="centrarMapaBio(6.0100, -77.3500, 10)">🌿 PNN Utría (Flora y Selvas)</button>
+
+      <h4>Endémicas y En Peligro</h4>
+      <button class="btn-punto-bio" onclick="centrarMapaBio(5.0000, -76.8000, 10)">🐸 Rana Dardo Dorada (Endémica)</button>
+      <button class="btn-punto-bio" onclick="centrarMapaBio(3.9786, -81.5906, 8)">🦈 SFF Malpelo (Pelágicos y Aves)</button>
+      <button class="btn-punto-bio" onclick="centrarMapaBio(2.9656, -78.1792, 11)">🐆 PNN Gorgona (Mamíferos y Caoba)</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+  const mapBio = L.map('mapa-pacifico-bio').setView([4.5, -77.5], 7);
+
+  // Servidor de mapas CARTO (libre de bloqueos 403)
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap &copy; CARTO'
+  }).addTo(mapBio);
+
+  const datosBiodiversidad = [
+    {
+      coords: [5.6947, -76.6611],
+      titulo: "Serranía del Baudó y Geografía de Chocó",
+      subtitulo: "Geografía Física y Relieve",
+      contenido: `<p><strong>Relieve:</strong> Alturas entre 0 y 500 m s. n. m.[cite: 2] Separa la franja costera de los valles del interior[cite: 2].</p>
+                  <p><strong>Clima:</strong> Precipitaciones de 3.000 a 16.000 mm/año[cite: 2]. Lloró registra el 2.º lugar más lluvioso del mundo[cite: 2].</p>`
+    },
+    {
+      coords: [3.8801, -77.0312],
+      titulo: "Valle del Cauca (Buenaventura y Dagua)",
+      subtitulo: "Geografía Física e Hidroeléctricas",
+      contenido: `<p><strong>Geografía:</strong> Abarca los municipios de Buenaventura y Dagua[cite: 2]. Contiene uno de los puertos comerciales más estratégicos de Colombia[cite: 2].</p>
+                  <p><strong>Hidrografía:</strong> Ríos Dagua (101 km) y Anchicayá (100 km), utilizados para la generación hidroeléctrica[cite: 2].</p>`
+    },
+    {
+      coords: [1.8058, -78.7619],
+      titulo: "Pacífico Sur y Río Mira",
+      subtitulo: "Subregiones de Nariño",
+      contenido: `<p><strong>Subregiones:</strong> Pacífico Sur, Sanquianga y Telembí[cite: 2].</p>
+                  <p><strong>Río Mira:</strong> Nace en Ecuador (como río Chota) y recorre 328 km abasteciendo a Tumaco y la zona fronteriza[cite: 2].</p>`
+    },
+    {
+      coords: [6.8000, -76.9000],
+      titulo: "Río Atrato",
+      subtitulo: "Red Hidrográfica",
+      contenido: `<p><strong>Longitud:</strong> 612 km[cite: 2]. Nace en el Cerro del Plateado y desemboca en el Golfo de Urabá[cite: 2]. Es una de las vías navegables más caudalosas en relación con su cuenca[cite: 2].</p>`
+    },
+    {
+      coords: [4.2000, -77.2000],
+      titulo: "Río San Juan",
+      subtitulo: "Vertiente del Pacífico",
+      contenido: `<p><strong>Longitud:</strong> 380 km[cite: 2]. Nace en el Nudo del Paramillo y recorre Chocó y Valle del Cauca[cite: 2]. Es el río más caudaloso de Sudamérica hacia la vertiente pacífica[cite: 2].</p>`
+    },
+    {
+      coords: [2.5686, -77.8839],
+      titulo: "Manglares y Playones (Cauca)",
+      subtitulo: "Ecosistemas y Flora Costera",
+      contenido: `<p><strong>Ecosistema:</strong> Playas y playones de lodo que superan los 550 km de extensión[cite: 2].</p>
+                  <p><strong>Flora:</strong> Destacan los 4 tipos de manglar (rojo, negro, blanco y piñuelo) que aportan cerca de 10 toneladas de hojarasca por hectárea al año a las redes tróficas marinas[cite: 2].</p>`
+    },
+    {
+      coords: [3.9667, -77.3500],
+      titulo: "Bahía Málaga (PNN Uramba)",
+      subtitulo: "Fauna Marina y Terrestre",
+      contenido: `<p><strong>Fauna Marina:</strong> Zona de reproducción y crianza de la ballena jorobada (visitas entre julio y noviembre)[cite: 2].</p>
+                  <p><strong>Fauna Terrestre:</strong> Hábitat de jaguares, tigrillos, jabalíes, osos perezosos, osos hormigueros y caimanes de agua dulce[cite: 2].</p>`
+    },
+    {
+      coords: [6.0100, -77.3500],
+      titulo: "Selvas Tropicales de Utría",
+      subtitulo: "Flora y Ecosistema de Selva Húmeda",
+      contenido: `<p><strong>Flora:</strong> Árboles gigantes como el ceibo y la palma de cera, junto a orquídeas, bromelias, helechos, abarco y fresco[cite: 2].</p>
+                  <p><strong>Especie Vegetal Amenazada:</strong> La Caoba de hoja grande (en peligro por tala e invasión de hábitat)[cite: 2].</p>`
+    },
+    {
+      coords: [5.0000, -76.8000],
+      titulo: "Hábitat de Especies Endémicas",
+      subtitulo: "Rana Dardo Dorada",
+      contenido: `<p><strong>Fauna Endémica:</strong> Alberga a la <em>Phyllobates terribilis</em> (Rana dardo dorada), especie altamente venenosa endémica de las selvas húmedas del Pacífico colombiano[cite: 2].</p>`
+    },
+    {
+      coords: [3.9786, -81.5906],
+      titulo: "SFF Malpelo",
+      subtitulo: "Fauna Pelágica y Avifauna",
+      contenido: `<p><strong>Ecosistema Marino:</strong> Reserva marina insular protegida[cite: 2].</p>
+                  <p><strong>Fauna:</strong> Gran concentración de cachalotes, especies de tiburones, peces pelágicos y aves marinas como el Alcatraz de Nazca[cite: 2].</p>`
+    },
+    {
+      coords: [2.9656, -78.1792],
+      titulo: "PNN Gorgona",
+      subtitulo: "Especies en Peligro de Extinción",
+      contenido: `<p><strong>Fauna Amenazada:</strong> Refugio para el Jaguar, Oso Hormiguero, Mono Aullador y Tití Cabeciblanco[cite: 2].</p>
+                  <p><strong>Amenazas:</strong> Deforestación, fragmentación de bosque y cacería ilegal para extracción de piel/carne[cite: 2].</p>`
+    }
+  ];
+
+  const marcadoresBio = [];
+
+  datosBiodiversidad.forEach((punto) => {
+    const marker = L.marker(punto.coords).addTo(mapBio);
+    const htmlPopup = `
+      <div class="popup-bio-titulo">${punto.titulo}</div>
+      <div class="popup-bio-sub">${punto.subtitulo}</div>
+      <div class="popup-bio-contenido">${punto.contenido}</div>
+    `;
+    marker.bindPopup(htmlPopup);
+    marcadoresBio.push({ coords: punto.coords, marker: marker });
+  });
+
+  function centrarMapaBio(lat, lng, zoom) {
+    mapBio.flyTo([lat, lng], zoom, { duration: 1.2 });
+    const encontrado = marcadoresBio.find(m => m.coords[0] === lat && m.coords[1] === lng);
+    if (encontrado) {
+      setTimeout(() => { encontrado.marker.openPopup(); }, 1000);
+    }
+  }
+</script>
+<!-- FIN: MAPA INTERACTIVO COMPLETO -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 4: GEOGRAFÍA HUMANA -->
+    <section id="humana">
+        <h2 class="section-title">PERSONAS QUE LE DAN VIDA AL TERRITORIO</h2>
+        <p class="section-subtitle">Demografía, Poblamiento y Grupos Humanos</p>
+
+        
+        <div class="card">
+            <h3>Población y Demografía</h3>
+            <div class="editable-placeholder">
+                <p>La región Pacífica de Colombia tiene una población aproximada de 1,5 millones de habitantes. Esta cifra corresponde a las personas que viven en los 42 municipios que integran estrictamente la región del litoral (la costa pacífica).</p>
+                <p>La población se concentra principalmente en tres grandes centros urbanos del litoral los cuales son. </p>
+                <p>Buenaventura (Valle del Cauca), Tumaco (Nariño), Quibdó (Capital del Chocó) </p>
+                <p>El resto de la región está compuesta por selvas densas y zonas rurales, por lo que su densidad poblacional es baja, alcanzando apenas unos 6,2 habitantes por kilómetro cuadrado según el Atlas Estadístico del DANE.</p>
+            </div>
+            <div class="editable-placeholder">
+                <label>DISTRIBUCIÓN URBANA: </label>
+                <p>La mayor parte de la población de la región pacífica se encuentra en las zonas urbanas, aproximadamente el 73%. Los principales centros urbanos son Buenaventura, que concentra cerca del 30% de la población urbana y es el puerto más importante, seguido por Tumaco,con un 14%, y Quibdó. Las ciudades reciben constante migración desde las zonas rurales debido a la búsqueda de oportunidades y de seguridad. </p>
+                <label>DISTRIBUCIÓN RURAL: </label>
+                <p> La zona rural se compone de pequeñas comunidades ribereñas y costeras conectadas principalmente por ríos. La densidad rural promedio de la región es de unas 6,2 personas por kilómetro cuadrado, una de las más bajas del país, predominan los territorios colectivos de comunidades afrodescendientes e indígenas organizadas en caseríos a lo largo de los ríos Atrato, San Juan, Patía y Mira.</p>
+            </div>
+            <div class="editable-placeholder">
+                <label>Ciudades Principales</label>
+                <h3>Las principales ciudades y centros urbanos relacionados con el Pacífico son:</h3>
+                <p><h3>Buenaventura: </h3> en el Valle del Cauca: principal ciudad portuaria colombiana sobre el océano Pacífico.</p>
+                <p><h3>Quibdó: </h3> capital del Chocó y principal centro urbano del departamento.</p>
+                <p><h3>Tumaco: </h3>importante ciudad portuaria y comercial del Pacífico sur.</p>
+                <p><h3>Guapi: </h3>importante centro urbano y comercial de la costa caucana.</p>
+                <p>El DNP reconoce a Buenaventura, Quibdó, Tumaco y Guapi como ciudades fundamentales del litoral Pacífico por sus funciones y las brechas que presentan en servicios públicos.</p>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Características Sociales</h3>
+            <div class="editable-placeholder">
+                <label>Grupos humanos y diversidad cultural</label>
+                <p>La Región Pacífica tiene una gran diversidad étnica y cultural, con una fuerte presencia de comunidades afrocolombianas e indígenas.</p>
+                <p>Según la caracterización de la Comisión de la Verdad, aproximadamente 80 % de la población es negra, 12 % indígena y 8 % mestiza. Estas cifras son aproximadas</p>
+            </div>
+            <div class="editable-placeholder">
+                <label>COMUNIDADES INDÍGENAS </label>
+                <p>La región del Pacífico colombiano tiene una profunda diversidad étnica, destacándose pueblos ancestrales como los Emberá, Wounaan, Awá y los Inga, quienes comparten este territorio junto a importantes comunidades afrodescendientes. </p>
+                <label>Principales Comunidades Indígenas:</label>
+                <p><h3>Emberá: </h3> Ubicados en el departamento de Chocó y zonas selváticas. Destacan por su profunda relación con los ríos, su maestría en la talla de madera y la cestería en hoja de werregue.</p>
+                <p><h3>Wounaan: </h3>Vecinos cercanos de los Emberá en Chocó, reconocidos mundialmente por sus artesanías tejidas y su lengua independiente (la familia lingüística Noanamá).</p>
+                <p><h3>Awá: </h3>Asentados en la zona andina y de piedemonte hacia la costa pacífica, especialmente en el departamento de Nariño. Viven en armonía con los bosques nublados y practican una economía basada en la agricultura de pancoger.</p>
+                <p><h3>Siapidara: </h3>Habitantes de la costa pacífica de Nariño y Cauca, reconocidos por su defensa del territorio ancestral y su cultura ligada al agua y los manglares.</p>
+                <h3>Características: </h3>
+                <p>Ocupan cerca del 5% del territorio de la región pacífica, protegiendo ecosistemas vitales de selva tropical y manglar mediante prácticas tradicionales sostenibles. </p>
+                <p>Numerosas comunidades enfrentan graves riesgos de desplazamiento y afectaciones a causa del conflicto armado y economías ilícitas en el litoral.</p>
+            </div>
+            <div class="editable-placeholder">
+                <label>Condiciones de Vida y Pobreza</label>
+                <p>La Región Pacífica colombiana presenta preocupantes índices de vulnerabilidad social y pobreza multidimensional, acentuados por una histórica brecha de infraestructura, acceso limitado a servicios básicos sanitarios y oportunidades de empleo formal en comparación con el resto del país. Pese a la inmensa riqueza natural y al enorme potencial económico de sus cuencas y puertos comerciales, gran parte de sus comunidades costeras y rurales enfrentan serios desafíos de conectividad y desarrollo que impactan de manera directa la calidad de vida de sus habitantes.</p>
+            </div>
+        </div>
+        
+
+        <h3 style="margin-top: 3rem; text-align: center; color: var(--sand-gold);">UN PACÍFICO DE MUCHAS VOCES</h3>
+        
+            <div class="card">
+                <h2 style="text-align: center;">Comunidades Afrocolombianas</h2>
+                <div class="editable-placeholder">
+                    <label>Comunidades afrocolombianas</label>
+                    <p>Las comunidades negras y afrocolombianas constituyen uno de los principales grupos humanos del Pacífico. Su identidad está estrechamente relacionada con los ríos, el mar, los manglares, la pesca, la agricultura, la minería tradicional, la música, la gastronomía y las tradiciones orales.</p>
+                    <p>El DANE ha documentado una alta concentración de población afrodescendiente en los departamentos del Pacífico. En el Censo Nacional de Población y Vivienda de 2018, Chocó fue el departamento con mayor proporción de población que se reconoció como afrodescendiente, con alrededor del 74%.</p>
+                    <img style="position: relative; border: #00a896 dashed 2px;border-radius: 10%; max-width: 360px;" src="imagen/afrocolombianos choco.jpeg" alt="afrocolombianos choco">
+                </div>
+            </div>
+            <div class="card">
+                <h2 style="text-align: center;">Comunidades Indígenas</h2>
+                <div class="editable-placeholder">
+                    <label>comunidades indígenas</label>
+                    <p>Comparten el territorio selvático con la población afro. Los pueblos más importantes son los Emberá,los Wounaan, los Awá y los Eperara Siapidara.</p>
+                    <img style="position: relative; border: #00a896 dashed 2px;border-radius: 10%; max-width: 360px;" src="imagen/comunidades indigenas choco.jpeg" alt="comunidades indigenas choco">
+                </div>
+            </div>
+            <div class="card">
+                <h2 style="text-align: center;">Campesinos y Otros Grupos</h2>
+                <div class="editable-placeholder">
+                    <label>Campesinos y Otros Grupos</label>
+                    <h3>Campesinos:</h3>
+                    <p>También existen comunidades campesinas, especialmente en zonas rurales, dedicadas a actividades como la agricultura, pesca, aprovechamiento de recursos naturales y otras actividades de subsistencia y producción local, la organización social y económica de muchas comunidades rurales está estrechamente relacionada con los ríos y el territorio.</p>
+                    <img class="img-box" src="imagen/campesisnos choco.jpeg" alt="campesisnos">
+                    <h3>Las Piangüeras y Platoneras:</h3>
+                    <p>Son las mujeres trabajadoras del Pacífico que recolectan moluscos (piangua) en los manglares o vende pescado, manteniendo la economía tradicional.</p>
+                    <img class="img-box" src="imagen/pianüeras.jpeg" alt="piangueras">
+                    <img class="img-box" src="imagen/platoneras.jpeg" alt="platoneras">
+                </div>
+            </div>
+        </div>
+
+        <div class="embed-container" style="margin-top: 2rem;">
+            <div>
+                <img style="max-width: 400px;border-radius: 20px;" src="imagen/infografia 1.jpeg" alt="infografia 1">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 5: CULTURA Y DIVERSIDAD -->
+    <section id="cultura">
+        <h2 class="section-title">UNA CULTURA QUE SE ESCUCHA, SE BAILA Y SE SABOREA</h2>
+        <p class="section-subtitle">Patrimonio Cultural Inmaterial y Expresiones Artísticas</p>
+
+        
+            <div class="card">
+                <h2 style="text-align: center;">Tradiciones y Costumbres</h2>
+                <div class="editable-placeholder">
+                    <label>tradiciones</label>
+                    <h4>Una característica fundamental de la cultura del Pacífico es la transmisión oral de conocimientos y tradiciones de generación en generación.</h4>
+                    <h4>Entre las prácticas tradicionales se encuentran:</h4>
+                    <p>Relatos y narraciones orales.</p>
+                    <p>Cantos tradicionales.</p>
+                    <p>Celebraciones religiosas.</p>
+                    <p>Prácticas relacionadas con la pesca y la agricultura.</p>
+                    <p>Conocimiento sobre plantas y medicinas tradicional.</p>
+                    <p>Reuniones comunitarias.</p>
+                </div>
+                <div class="editable-placeholder">
+                    <label>Costumbres</label>
+                    <p>Entre las costumbres se encuentran las reuniones familiares y comunitarias, las celebraciones religiosas acompañadas de música y comida, la pesca y recolección de productos del manglar y la preparación colectiva de alimentos.</p>
+                    <p>En las comunidades del Pacífico, la música, la comida y las celebraciones están muy relacionadas entre sí. El Ministerio de Cultura señala que las músicas de marimba y los cantos suelen acompañar la preparación y el consumo de alimentos y las fiestas tradicionales.</p>
+                </div>
+                <div class="editable-placeholder"><audio src="imagen/Hospitales_flotantes_en_el_Pacífico_colombiano.m4a" controls></audio></div>
+            </div>
+            <div class="card">
+                <h2 style="text-align: center;">Gastronomía</h2>
+                <div class="editable-placeholder"><h4>La gastronomía en la región Pacífica utiliza productos que provienen del mar, los ríos, los manglares, los cultivos y la selva.</h4>
+                <h4>Algunos platos y preparaciones tradicionales:</h4>
+                <p>Encocado de pescado, cangrejo, o mariscos.</p>
+                <p>Tapao de pescado.</p>
+                <p>Pusandao.</p>
+                <p>Arroz con coco.</p>
+                <p>Arroz atollado.</p>
+                <p>Tamales de piangua.</p>
+                <p>Empanada de pescado o mariscos.</p>
+                <p>Patacones.</p>
+                <p>Ceviches de marisco.</p>
+                </div>
+                <div class="editable-placeholder"><img src="imagen/comida tipica.jfif" alt="comida tipica"></div>
+            </div>
+            <div class="card">
+                <h2 style="text-align: center;">Música y Danzas</h2>
+                <div class="editable-placeholder">
+                    <label>Musica</label>
+                    <h4>La música es uno de los elementos culturales más representativos de la  región</h4>
+                    <h4>Los que más destacan son: </h4>
+                    <p>Marimba de chonta.</p>
+                    <p>Currulao.</p>
+                    <p>Arrullos.</p>
+                    <p>Alabaos.</p>
+                    <p>Chigualos.</p>
+                    <p>Música acompañada por cununos, bombos, guasas y marimba.</p>
+                    <p>La marimba se fabrica artesanalmente con madera de palma, y tubos resonadores de Bambú, y se acompaña de tambores y maracas.</p>
+                </div>
+                <div class="editable-placeholder">
+                    <label>Danzas</label>
+                    <p>Entre las danzas más representativas está el currulao, relacionado con la música de marimba, también existen expresiones como los arrullos, que tienen un componente religioso, además de otras danzas y cantos tradicionales vinculados con la vida comunitaria.</p>
+                    <p>La UNESCO señala que estas expresiones se realizan en acontecimientos rituales, religiosos y festivos, y que la danza y la música contribuyen a fortalecer la identidad colectiva.</p>
+                </div>
+                <div class="editable-placeholder">
+                    <img style="max-width: 700px; border-radius: 20px;" src="imagen/musica y danza.jfif" alt="musicas y danzas">
+                </div>
+            </div>
+
+
+            <div class="card">
+                <h2 style="text-align: center;">Vestuario</h2>
+                <div class="editable-placeholder">
+                    <p>El vestuario tradicional se utiliza principalmente en presentaciones folclóricas y danzas.</p>
+                    <p>En el Pacífico sur, para el currulao, se encuentran trajes femeninos con faldas amplias, normalmente son de colores claros o vistosos, blusas y pañuelos, mientras que los hombres pueden utilizar camisas de manga corta, pantalones claros y pañuelos.</p>
+                    <p>El Sistema de Información Turística de Nariño documenta este tipo de vestuario en las expresiones tradicionales del Pacífico nariñense, además, el Ministerio de Relaciones Exteriores entregó en 2026 trajes tradicionales de currulao a jóvenes de Tumaco para fortalecer la enseñanza de las danzas del Pacífico.</p>
+                </div>
+                <div class="editable-placeholder"><img style="max-width: 700px; border-radius: 20px;" src="imagen/vestimentas.jfif" alt="vestimentas">></div>
+            </div>
+            <div class="card">
+                <h3>Fiestas y Celebraciones</h3>
+                <div class="editable-placeholder">
+                    <label>Fiestas de San Pacho (Fiestas de San Francisco de Asís - Quibdó, Chocó)</label>
+                    <p><h4>Fecha y Ubicación: </h4>Se celebran del 20 de septiembre al 5 de octubre en Quibdó.</p>
+                    <p><h4>Reconocimiento: </h4>Declaradas Patrimonio Cultural Inmaterial de la Humanidad por la UNESCO en 2012.</p>
+                    <p><h4>Origen e Identidad: </h4>Fusionan la devoción franciscana con la resistencia, memoria y tradiciones afrocolombianas.</p>
+                    <h3>Componentes Principales:</h3>
+                    <p><h4>Componentes Principales:</h4>Música de viento y percusión que acompaña las comparsas por los doce barrios franciscanos.</p>
+                    <p><h4>Carrozas y Banderas:</h4>Desfiles temáticos con esculturas y alegorías a la realidad social y política de la región.</p>
+                    <p><h4>Dimensión Religiosa:</h4>Procesión del Santo, misas de alborada y la bajada de la imagen de San Francisco de Asís.</p>
+                </div>
+                <div class="editable-placeholder">
+                    <label>Festival de Música del Pacífico "Petronio Álvarez" (Cali, Valle del Cauca)</label>
+                    <p><h4>Fecha y Ubicación: </h4>Se realiza anualmente a mediados de agosto en la Unidad Deportiva Alberto Galindo en Cali.</p>
+                    <p><h4>Objetivo:</h4>Salvaguardar y visibilizar la cultura, música e identidad afrodescendiente del Pacífico colombiano.</p>
+                    <h3>Categorías Musicales en Competencia:</h3>
+                    <p><h4>Marimba y Cantos Tradicionales:</h4> Enfocada en la tradición del Pacífico Sur.</p>
+                    <p><h4>Chirimía:</h4>Centrada en los ritmos del Pacífico Norte (Chocó).</p>
+                    <p><h4>Violines Caucanos:</h4>Música tradicional del norte del Cauca y sur del Valle.</p>
+                    <p><h4>Versión Libre:</h4>Fusión de ritmos pacíficos con géneros contemporáneos.</p>
+                    <p><h4>Muestra Cultural Acompañante:</h4>Ciudadela cultural con pabellones de gastronomía típica (encocados, cazuelas), bebidas ancestrales (viche, arrechón, tumbaacatres), artesanías y moda afro.</p>
+                </div>
+                <div class="editable-placeholder"><video style="max-width: 350px;" src="imagen/El_Poder_de_las_Fiestas_del_Pacífico_Colombiano.mp4" controls></video></div>
+            </div>
+            <div class="card">
+                <h2 style="text-align: center;">Artesanías</h2>
+                <div class="editable-placeholder">
+                    <h4>Entre las artesanías tradicionales se encuentra las cestería de werregue que son elaboradas por mujeres indígenas Wounaan.</h4>
+                    <h4>Otras artesanías son:</h4>
+                    <p>Cestaria.</p>
+                    <p>Tejido en chaquiras.</p>
+                    <p>tejidos en fibras naturales.</p>
+                    <p>Joyeria.</p>
+                    <p>Talla en madera.</p>
+                    <p>Trabajos con palma de werregue</p>
+                    <h4>las comunidades Wounaan y Emberá conservan importantes tradiciones artesanales, mientras que comunidades afrocolombianas también desarrollan trabajos de joyería, tejido y talla en madera.</h4>
+                </div>
+                <div class="editable-placeholder"><img style="max-width: 700px; border-radius: 20px;" src="imagen/artesanias.jpeg" alt="artesanias"></div>
+                <div class="editable-placeholder"><iframe style="border-radius: 20px;" width="560" height="315" src="https://www.youtube.com/embed/RQs3PC5oP0s?si=63ZGQ-cmdoI2vo0R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+            </div>
+        </div>
+
+        
+    </section>
+
+    <!-- SECCIÓN 6: GEOGRAFÍA ECONÓMICA -->
+    <section id="economica">
+        <h2 class="section-title">LA RIQUEZA DEL TERRITORIO</h2>
+        <p class="section-subtitle">Sectores Económicos, Comercio y Turismo</p>
+
+        
+            <div class="card">
+                <h3>🌱 Sector Primario🌱 </h3>
+                <h4>Son las actividades que obtienen recursos directamente de la naturaleza.</h4>
+                <div class="editable-placeholder">
+                    <label>🌾Agricultura🌾</label>
+                    <p>Se cultivan productos como plátano, arroz, maíz, yuca, cacao, café y frutas. En las zonas del Pacífico de Nariño, Cauca y Chocó la agricultura tiene gran importancia para las comunidades rurales.</p>
+                    <label>🐄Ganadería🐄</label>
+                    <p>La ganadería se desarrolla principalmente en algunas zonas del Valle del Cauca, Cauca y Nariño, donde existen terrenos adecuados para la cría de ganado y producción de alimentos.</p>
+                    <label>🎣Pesca🎣</label>
+                    <p>La pesca es una actividad fundamental para las comunidades costeras. Se practica tanto de manera artesanal como comercial y proporciona alimentos e ingresos a numerosas familias.</p>
+                </div>
+                <div class="editable-placeholder">
+                    <label>⛏️Minería⛏️</label>
+                    <p>La minería tiene una gran importancia histórica, especialmente en Chocó, donde se ha desarrollado la extracción de oro y platino. Sin embargo, la minería también puede generar problemas ambientales cuando se realiza sin controles adecuados. </p>
+                    <label>🌳Explotación forestal🌳</label>
+                    <p>La región posee grandes áreas de bosques tropicales. Se aprovechan recursos forestales como la madera, aunque es necesario controlar la explotación para evitar la deforestación.</p>
+                    <label>💧Otros recursos naturales💧</label>
+                    <p>La región cuenta con una enorme riqueza en ríos, bosques, manglares, fauna, flora y recursos marinos. Estos recursos también permiten desarrollar actividades de turismo y ecoturismo.</p>
+                </div>
+            </div>
+            <div class="card">
+                <h3>🏭Sector Secundario🏭</h3>
+                <h4>Este sector transforma las materias primas en productos elaborados.</h4>
+                <div class="editable-placeholder">
+                    <label>🏗️Industrias🏗️</label>
+                    <p>En especial en el Valle del Cauca existen importantes industrias de alimentos, bebidas, productos químicos, papel, productos farmacéuticos y otros bienes.</p>
+                    <label>🔄Transformación de materias primas🔄</label>
+                    <p>Los productos agrícolas y pesqueros pueden ser procesados para producir alimentos y otros bienes con mayor valor comercial.</p>
+                </div>
+                <div class="editable-placeholder">
+                    <label>🍚Producción de alimentos🍚</label>
+                    <p>Se destacan actividades relacionadas con el procesamiento de azúcar, café, alimentos, bebidas, productos pesqueros y otros productos agrícolas.</p>
+                    <label>🛠️Manufacturas🛠️</label>
+                    <p>La manufactura tiene especial importancia en el Valle del Cauca, uno de los departamentos económicamente más importantes de la región.</p>
+                </div>
+            </div>
+            <div class="card">
+                <h3>🛍️Sector Terciario🛍️</h3>
+                <h4>Es el sector dedicado principalmente a los servicios.</h4>
+                <div class="editable-placeholder">
+                    <label>🏪Comercio🏪</label>
+                    <p>El Pacífico tiene importantes atractivos naturales y culturales. Sus playas, selvas, ballenas, gastronomía y cultura afrocolombiana atraen visitantes.</p>
+                    <label>🚢Transporte🚢</label>
+                    <p>El transporte marítimo es fundamental debido a la ubicación de la región. También son importantes las carreteras y el transporte aéreo.</p>
+                    <label>💼Servicios💼</label>
+                    <p>Incluye educación, salud, restaurantes, hoteles, comunicaciones y otros servicios que generan empleo.</p>
+                </div>
+                <div class="editable-placeholder">
+                    <label>🏝️Turismo🏝️</label>
+                    <p>El Pacífico tiene importantes atractivos naturales y culturales. Sus playas, selvas, ballenas, gastronomía y cultura afrocolombiana atraen visitantes.</p>
+                    <label>💰Actividades financieras💰</label>
+                    <p>Los bancos, cooperativas y otras entidades financieras apoyan las actividades comerciales y empresariales de la región.</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 3rem; text-align: center; color: var(--sand-gold);">DEL TERRITORIO AL MERCADO</h3>
+        
+            <div class="card">
+                <h4>Productos y Exportación</h4>
+                <div class="editable-placeholder">
+                    <label>🌎Productos que se exportan🌎</label>
+                    <p>La región participa en las exportaciones colombianas mediante productos agrícolas, industriales, mineros y pesqueros. El Valle del Cauca tiene una participación especialmente importante en la economía regional. Según datos del DANE, en 2020 representaba el 72,3 % de la economía de la Región Pacífica. </p>
+                    <label>📦Principales productos📦</label>
+                    <p>Entre los principales productos y actividades económicas se encuentran:</p>
+                    <p>Café.</p>
+                    <p>Azúcar.</p>
+                    <p>Cacao.</p>
+                    <p>Plátano.</p>
+                    <p>Arroz.</p>
+                    <p>Productos pesqueros.</p>
+                    <p>Oro.</p>
+                    <p>Productos industriales.</p>
+                    <p>Madera y productos forestales.</p>
+                </div>
+            </div>
+            <div class="card">
+                <h4>Infraestructura y Conectividad</h4>
+                <div class="editable-placeholder">
+                    <label>🛣️Vías de comunicación🛣️</label>
+                    <p>La región se conecta mediante carreteras, transporte marítimo y aéreo. Sin embargo, las condiciones geográficas, la selva y las fuertes lluvias dificultan la construcción y mantenimiento de algunas vías.</p>
+                    <label>⚓Puertos importantes⚓</label>
+                    <p>El principal puerto de la región es el Puerto de Buenaventura, ubicado en el Valle del Cauca. Es fundamental para el comercio exterior colombiano y conecta al país con mercados del océano Pacífico. </p>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 3rem; text-align: center; color: var(--sand-gold);">DESCUBRE EL PACÍFICO (TURISMO)</h3>
+        
+            <div class="card">
+                <h4>Turismo Ecológico y de Aventura</h4>
+                <div class="editable-placeholder">
+                    <h3>La Región Pacífica tiene un gran potencial turístico gracias a sus paisajes naturales, playas, selvas y biodiversidad.</h3>
+                    <h3>📍 Principales destinos turísticos</h3>
+                    <p>Buenaventura.</p>
+                    <p>Nuquí.</p>
+                    <p>Bahía Solano.</p>
+                    <p>Gorgona.</p>
+                    <p>Tumaco.</p>
+                    <p>Guapi.</p>
+                    <p>Juanchaco y Ladrilleros.</p>
+                    <label>🐋Turismo de aventura🐋</label>
+                    <h4>Se pueden realizar actividades como:</h4>
+                    <p>Avistamiento de ballenas.</p>
+                    <p>Buceo.</p>
+                    <p>Surf.</p>
+                    <p>Senderismo.</p>
+                    <p>Kayak.</p>
+                    <p>Exploración de selvas y ríos.</p>
+                </div>
+            </div>
+            <div class="card">
+                <h4>Turismo Cultural</h4>
+                <div class="editable-placeholder">
+                    <label>🎭Turismo cultural🎭</label>
+                    <p>Permite conocer las tradiciones, música, gastronomía, danzas y costumbres de las comunidades afrocolombianas e indígenas de la región.</p>
+                    <label>🌿Turismo ecológico🌿</label>
+                    <p>La biodiversidad es uno de los principales atractivos. Se pueden visitar selvas, manglares, parques naturales, playas y otros ecosistemas.</p>
+                </div>
+            </div>
+            <div class="card">
+                <h4>⚠️PROBLEMÁTICAS ECONÓMICAS⚠️</h4>
+                <h3>A pesar de su gran riqueza natural, la Región Pacífica presenta importantes dificultades económicas y sociales.</h3>
+                <div class="editable-placeholder">
+                    <label>👷Desempleo👷</label>
+                    <p>Existen dificultades para acceder a empleos formales y estables en varios territorios.</p>
+                    <label>🧑‍💼Economía informal🧑‍💼</label>
+                    <p>Muchas personas dependen de pequeños negocios, ventas y trabajos informales para obtener sus ingresos.</p>
+                    <label>⛏️Dependencia de determinados recursos⛏️</label>
+                    <p>Algunas zonas tienen una fuerte dependencia de actividades como la minería, pesca, agricultura o explotación forestal, lo que puede hacer vulnerable la economía ante cambios en estas actividades. </p>
+                    <label>🌳Impactos ambientales🌳</label>
+                    <p>La minería ilegal, la deforestación, la contaminación de los ríos y otras actividades pueden afectar los ecosistemas.</p>
+                    <label>⚖️Desigualdad económica⚖️</label>
+                    <p>Existe una diferencia importante entre el potencial de recursos naturales de la región y las condiciones económicas de parte de su población. El Banco de la República señala que el Pacífico ha presentado históricamente un rezago económico y social frente a otras regiones del país.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="embed-container" style="margin-top: 2rem;">
+            <div>
+                <img style="max-width: 700px;" src="imagen/Economía_de_la_Región_Pacífica.png" alt="economia">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 7: PROBLEMÁTICAS Y DESAFÍOS -->
+    <section id="problematicas">
+        <h2 class="section-title">UN PARAÍSO CON GRANDES DESAFÍOS</h2>
+        <p class="section-subtitle">Reflexión Crítica y Análisis Territorial</p>
+
+        
+            <div class="card">
+                <div class="editable-placeholder"><label>Minería ilegal</label></div>
+                <div class="editable-placeholder">
+                    <label>¿Cuál es el problema?</label>
+                    <p>La extracción ilícita de minerales (principalmente oro y platino) a gran escala mediante el uso de maquinaria pesada en ríos y selvas del territorio pacífico.</p>
+                </div>
+                <div class="editable-placeholder"><label>Causas:</label>
+                    <p>La presencia de actores al margen de la ley que buscan economías lucrativas, la falta de control y fiscalización estatal en zonas apartadas, y la escasez de oportunidades económicas formales para las comunidades locales.</p>
+                </div>
+                <div class="editable-placeholder"><label>Consecuencias:</label>
+                    <p>La contaminación masiva de fuentes hídricas con mercurio y sedimentos, la destrucción de ecosistemas estratégicos y la afectación directa a la seguridad alimentaria de los habitantes que dependen de la pesca.</p>
+                </div>
+                <div class="editable-placeholder"><label>¿A quiénes afecta?</label>
+                    <p>A las comunidades afrodescendientes e indígenas que habitan en las riberas de los ríos, a los pescadores artesanales y a la biodiversidad única de la región.</p>
+                </div>
+                <div class="editable-placeholder"><label>Posibles Soluciones</label>
+                    <p>Ejecutar operativos de control y judicialización contra la maquinaria ilegal, promover procesos formales de formalización minera ambientalmente responsable e impulsar proyectos productivos sostenibles (como el ecoturismo y la agricultura tradicional).</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="editable-placeholder"><label>Desplazamiento</label>
+                <p>El desplazamiento forzado masivo y el confinamiento de comunidades enteras que se ven obligadas a abandonar sus territorios ancestrales.</p>
+            </div>
+                <div class="editable-placeholder"><label>¿Cuál es el problema?</label>
+                    <p>Las disputas territoriales entre grupos armados ilegales por el control de corredores estratégicos para el narcotráfico y zonas de explotación minera ilegal.</p>
+                </div>
+                <div class="editable-placeholder"><label>Causas</label>
+                    <p>La ruptura del tejido social, la pérdida de saberes ancestrales, el abandono de prácticas culturales y productivas, y crisis humanitarias críticas en los centros urbanos receptores.</p>
+                </div>
+                <div class="editable-placeholder"><label>Consecuencias</label>
+                    <p>Principalmente a las comunidades rurales, campesinas, indígenas y consejos comunitarios afrodescendientes de la región.</p>
+                </div>
+                <div class="editable-placeholder"><label>¿A quiénes afecta?</label>
+                    <p>Principalmente a las comunidades rurales, campesinas, indígenas y consejos comunitarios afrodescendientes de la región.</p>
+                </div>
+                <div class="editable-placeholder"><label>Posibles Soluciones</label>
+                    <p>Fortalecer la presencia institucional integral del Estado en zonas rurales, garantizar programas de protección y retorno seguro con enfoque diferencial, y brindar apoyo psicológico y socioeconómico a las poblaciones desplazadas.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="editable-placeholder"><label>Contaminación</label></div>
+                <div class="editable-placeholder"><label>¿Cuál es el problema?</label>
+                    <p>La acumulación de desechos sólidos (plásticos y basuras) y la descarga de sustancias tóxicas e industriales en los cuerpos de agua, manglares y suelos del Pacífico</p>
+                </div>
+                <div class="editable-placeholder"><label>Causas</label>
+                    <p>La deficiencia o inexistencia de sistemas de acueducto, alcantarillado y plantas de tratamiento de aguas residuales en gran parte de los municipios, sumado a la falta de gestión adecuada de residuos sólidos y educación ambiental.</p>
+                </div>
+                <div class="editable-placeholder"><label>Consecuencias</label>
+                    <p>La degradación de los manglares y ecosistemas marinos, la proliferación de enfermedades en la población y la pérdida de hábitats para numerosas especies de fauna y flora.</p>
+                </div>
+                <div class="editable-placeholder"><label>¿A quiénes afecta?</label>
+                    <p>A la totalidad de los habitantes de la región, especialmente a los asentamientos urbanos costeros (como Buenaventura o zonas urbanas de Chocó) y a los ecosistemas naturales.</p>
+                </div>
+                <div class="editable-placeholder"><label>Posibles Soluciones</label>
+                    <p>Invertir en infraestructura de saneamiento básico y plantas de tratamiento, implementar programas comunitarios de reciclaje y gestión de basuras, y realizar campañas de concientización ambiental en las escuelas y comunidades.</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 3rem; text-align: center; color: var(--sand-gold);">¿TÚ QUÉ HARÍAS?</h3>
+        <div class="embed-container">
+            <div>
+                <!-- INICIO: ACTIVIDAD INTERACTIVA - REFLEXIÓN PACÍFICA -->
+<style>
+  .reflexion-root {
+    background: #f8f9fa;
+    border: 2px solid #3a506b;
+    border-radius: 12px;
+    max-width: 650px;
+    margin: 25px auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    color: #212529;
+  }
+
+  .reflexion-header {
+    text-align: center;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+  }
+
+  .reflexion-header h3 {
+    color: #1d3557;
+    margin: 0 0 8px 0;
+  }
+
+  .reflexion-header p {
+    color: #6c757d;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .panel-opciones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .btn-problema-sel {
+    background: #e9ecef;
+    border: 2px solid #adb5bd;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    color: #495057;
+  }
+
+  .btn-problema-sel:hover {
+    background: #ced4da;
+  }
+
+  .btn-problema-sel.activo {
+    background: #1d3557;
+    color: #fff;
+    border-color: #1d3557;
+  }
+
+  .caja-interactiva {
+    background: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .caja-interactiva h4 {
+    color: #e63946;
+    margin-top: 0;
+    font-size: 1.1rem;
+  }
+
+  .input-reflexion {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    resize: vertical;
+    box-sizing: border-box;
+  }
+
+  .btn-enviar-reflexion {
+    background: #2a9d8f;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn-enviar-reflexion:hover {
+    background: #21867a;
+  }
+
+  .impacto-metro {
+    background: #e9ecef;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+  }
+
+  .barra-progreso-exterior {
+    background: #ced4da;
+    border-radius: 10px;
+    height: 16px;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+
+  .barra-progreso-interior {
+    background: #e76f51;
+    height: 100%;
+    width: 0%;
+    transition: width 0.5s ease;
+  }
+
+  .hidden { display: none !important; }
+</style>
+
+<div class="reflexion-root">
+  <div class="reflexion-header">
+    <h3>💬 Foro de Reflexión: Voces por el Pacífico</h3>
+    <p>Selecciona una problemática para analizar su impacto y aportar tu solución ciudadana.</p>
+  </div>
+
+  <!-- SELECCIÓN DE PROBLEMÁTICA -->
+  <div class="panel-opciones">
+    <button class="btn-problema-sel activo" onclick="ReflexionApp.cambiarProblema(0)">⛏️ Minería Ilegal</button>
+    <button class="btn-problema-sel" onclick="ReflexionApp.cambiarProblema(1)">🚶‍♂️ Desplazamiento</button>
+    <button class="btn-problema-sel" onclick="ReflexionApp.cambiarProblema(2)">🌊 Contaminación</button>
+  </div>
+
+  <!-- CONTENEDOR DINÁMICO -->
+  <div class="caja-interactiva">
+    <h4 id="ref-titulo">Problemática 1: Minería Ilegal</h4>
+    <p id="ref-descripcion" style="font-size: 0.95rem; color: #495057; line-height: 1.5;">
+      La extracción ilícita de minerales degrada los ríos y altera profundamente la vida comunitaria y ambiental del territorio.
+    </p>
+
+    <div style="margin-top: 15px;">
+      <label style="font-weight: bold; font-size: 0.9rem; color: #1d3557;">Tu propuesta o compromiso de cambio:</label>
+      <textarea id="ref-input-user" class="input-reflexion" rows="3" placeholder="Escribe aquí qué harías desde tu posición para mitigar esta situación..."></textarea>
+      <button class="btn-enviar-reflexion" onclick="ReflexionApp.enviarAporte()">🚀 Registrar mi Propuesta</button>
+    </div>
+    <div id="ref-feedback" style="margin-top: 10px; font-weight: bold; font-size: 0.9rem;"></div>
+  </div>
+
+  <!-- MEDIDOR DE CONCIENCIA COLECTIVA -->
+  <div class="impacto-metro">
+    <span style="font-weight: bold; color: #1d3557; font-size: 0.95rem;">Índice de Compromiso Colectivo</span>
+    <div class="barra-progreso-exterior">
+      <div id="ref-barra" class="barra-progreso-interior"></div>
+    </div>
+    <p id="ref-contador-texto" style="font-size: 0.85rem; color: #6c757d; margin: 6px 0 0 0;">Aportes registrados: 0 / 3</p>
+  </div>
+</div>
+
+<script>
+const ReflexionApp = (function() {
+  const datosProblemas = [
+    {
+      titulo: "Problemática: Minería Ilegal",
+      desc: "La extracción ilícita con maquinaria pesada destruye los cauces hídricos y envenena con mercurio los alimentos de las comunidades ribereñas."
+    },
+    {
+      titulo: "Problemática: Desplazamiento Forzado",
+      desc: "La violencia de grupos armados desarraiga a familias enteras de sus tierras ancestrales, perdiendo tradiciones y saberes locales."
+    },
+    {
+      titulo: "Problemática: Contaminación Ambiental",
+      desc: "La acumulación de plásticos y la falta de plantas de tratamiento degradan los manglares y amenazan la biodiversidad única del litoral."
+    }
+  ];
+
+  let problemaActual = 0;
+  let aportesRealizados = [false, false, false];
+
+  function actualizarUI() {
+    const p = datosProblemas[problemaActual];
+    document.getElementById('ref-titulo').innerText = p.titulo;
+    document.getElementById('ref-descripcion').innerText = p.desc;
+    document.getElementById('ref-input-user').value = "";
+    document.getElementById('ref-feedback').innerText = "";
+  }
+
+  return {
+    cambiarProblema: function(idx) {
+      problemaActual = idx;
+      const botones = document.querySelectorAll('.btn-problema-sel');
+      botones.forEach((b, i) => {
+        if (i === idx) b.classList.add('activo');
+        else b.classList.remove('activo');
+      });
+      actualizarUI();
+    },
+
+    enviarAporte: function() {
+      const texto = document.getElementById('ref-input-user').value.trim();
+      const fb = document.getElementById('ref-feedback');
+
+      if (texto.length < 5) {
+        fb.style.color = "#e63946";
+        fb.innerText = "⚠️ Por favor, escribe una propuesta un poco más detallada.";
+        return;
+      }
+
+      fb.style.color = "#2a9d8f";
+      fb.innerText = "✅ ¡Propuesta registrada con éxito! Gracias por aportar al cambio.";
+
+      if (!aportesRealizados[problemaActual]) {
+        aportesRealizados[problemaActual] = true;
+      }
+
+      const totalAportes = aportesRealizados.filter(Boolean).length;
+      const porcentaje = (totalAportes / 3) * 100;
+
+      document.getElementById('ref-barra').style.width = porcentaje + "%";
+      document.getElementById('ref-contador-texto').innerText = `Aportes registrados: ${totalAportes} / 3 problemáticas evaluadas`;
+    }
+  };
+})();
+</script>
+<!-- FIN: ACTIVIDAD INTERACTIVA -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 8: MULTIMEDIA (VIDEO Y PODCAST) -->
+    <section id="multimedia">
+        <h2 class="section-title">PRODUCCIONES MULTIMEDIA DEL GRUPO</h2>
+        <p class="section-subtitle">Creaciones Audiovisuales y Sonoras Originales</p>
+
+        <div class="media-player-wrapper">
+            <h3 style="color: var(--ocean-turquoise); margin-bottom: 1rem;">EL PACÍFICO EN NUESTRAS PALABRAS (VIDEO ORIGINAL)</h3>
+            <div class="embed-container" style="min-height: 400px;">
+                <div>
+                    <video style="max-width: 800px;" src="imagen/paradoja del apcifico.mp4" controls></video>
+                </div>
+            </div>
+            <div class="grid-cards" style="margin-top: 1rem;">
+                <div class="editable-placeholder"><label>paradoja del pacifico</label></div>
+                <div class="editable-placeholder"><label>Es una presentación sobre la región Pacífica colombiana, destacando su biodiversidad, riqueza natural y minera, actividades económicas, problemáticas sociales y el reto de equilibrar el desarrollo, el comercio y la protección ambiental.</label></div>
+                <div class="editable-placeholder"><label>Emmanuel, Keren, Violeta, Cristina, Dayana, Javid y Andrés</label></div>
+            </div>
+        </div>
+
+        <div class="media-player-wrapper">
+            <h3 style="color: var(--sand-gold); margin-bottom: 1rem;">VOCES DEL PACÍFICO (PODCAST ORIGINAL)</h3>
+            <div class="embed-container" style="min-height: 200px;">
+                <div>
+                    <audio src="imagen/Cómo_las_reglas_potencian_tu_comunicación.m4a" controls></audio>
+            </div>
+            <div class="grid-cards" style="margin-top: 1rem;">
+                <div class="editable-placeholder"><label>Entre el abandono estatal, la riqueza cultural y los desafíos de la región</label></div>
+                <div class="editable-placeholder"><label>Un recorrido profundo por la realidad de la costa pacífica colombiana a través de una dinámica de entrevista periodística. En este episodio ponemos sobre la mesa una de las problemáticas más urgentes de la zona —como la falta de infraestructura, el aislamiento o las brechas socioeconómicas— conversando directamente con las voces que viven y entienden este territorio, demostrando cómo la riqueza cultural choca de frente con el abandono histórico del Estado.</label></div>
+                <div class="editable-placeholder"><label>Emmanuel, Keren, Violeta, Cristina, Dayana, Javid y Andrés</label></div>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 3rem; text-align: center; color: var(--sand-gold);">EL PACÍFICO EN UNA MIRADA (INFOGRAFÍAS)</h3>
+        
+            <div class="card">
+                <h4>INFOGRAFÍA 1: Geografía Física</h4>
+                <div class="embed-container">
+                    <img style="max-width: 900px; border-radius: 20px;" src="imagen/geografia fisica.jpeg" alt="geografia fisica">
+                </div>
+            </div>
+            <div class="card">
+                <h4>INFOGRAFÍA 2: Geografía Humana y Económica</h4>
+                <div class="embed-container">
+                    <img style="max-width: 900px; border-radius: 20px;" src="imagen/geografia humana.jpeg" alt="geografia humana">
+                </div>
+            </div>
+        </div>
+
+        <div class="media-player-wrapper" style="margin-top: 3rem;">
+            <h3 style="color: var(--ocean-turquoise);">CONOCE NUESTRO PROYECTO (PRESENTACIÓN)</h3>
+            <p style="margin-bottom: 1rem;">Presentación ejecutiva del grupo (10 a 15 diapositivas)</p>
+            <div class="embed-container" style="min-height: 300px;">
+                 <embed style="max-width: 800px; border-radius: 20px;" src="imagen/Colombia_s_Living_Pacific.pdf" type="application/pdf" class="contenedor-pdf" />
+            </div>
+            <a href="#" class="btn" style="margin-top: 1rem;">VER PRESENTACIÓN (ENLACE EXTERNO)</a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 9: ACTIVIDADES INTERACTIVAS -->
+    <section id="actividades">
+        <h2 class="section-title">¿CUÁNTO SABES DEL PACÍFICO?</h2>
+        <p class="section-subtitle">Evaluación Interactiva y Juegos Educativos</p>
+
+        
+            <div class="card">
+                <h3 style="color: var(--sand-gold);">ACTIVIDAD 1</h3>
+                <h4>RETO DEL PACÍFICO</h4>
+                <div class="embed-container">
+                    <div>
+                        <!-- INICIO: DESAFÍO INTERACTIVO DEL PACÍFICO (CON BOTÓN DE INICIO Y MÁS TIEMPO) -->
+<style>
+  .contenedor-trivia-pacifico {
+    max-width: 650px;
+    margin: 25px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    border: 2px solid #1b4332;
+  }
+
+  .trivia-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e9ecef;
+  }
+
+  .trivia-badge {
+    background: #2d6a4f;
+    color: #ffffff;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: bold;
+  }
+
+  .trivia-reloj {
+    font-weight: bold;
+    color: #d90429;
+    font-size: 1rem;
+  }
+
+  .trivia-pregunta-texto {
+    font-size: 1.1rem;
+    color: #1b4332;
+    margin-bottom: 20px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+
+  .trivia-grid-opciones {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .btn-trivia-opcion {
+    background: #f1f8f5;
+    border: 2px solid #52b788;
+    color: #1b4332;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn-trivia-opcion:hover:not([disabled]) {
+    background: #52b788;
+    color: #ffffff;
+  }
+
+  .btn-trivia-opcion.correcta {
+    background: #2b9348 !important;
+    color: #ffffff !important;
+    border-color: #2b9348 !important;
+  }
+
+  .btn-trivia-opcion.incorrecta {
+    background: #d90429 !important;
+    color: #ffffff !important;
+    border-color: #d90429 !important;
+  }
+
+  .trivia-mensaje-feedback {
+    font-size: 0.95rem;
+    font-weight: bold;
+    min-height: 25px;
+    margin-bottom: 15px;
+  }
+
+  .btn-trivia-accion {
+    background: #1b4332;
+    color: #ffffff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s ease;
+  }
+
+  .btn-trivia-accion:hover {
+    background: #2d6a4f;
+  }
+
+  /* PANTALLAS OCULTAS INICIALMENTE */
+  .trivia-pantalla-oculta {
+    display: none;
+  }
+
+  .puntaje-numero {
+    font-size: 2.5rem;
+    color: #2d6a4f;
+    margin: 10px 0;
+    font-weight: bold;
+  }
+</style>
+
+<div class="contenedor-trivia-pacifico">
+  
+  <!-- PANTALLA 1: INICIO (BIENVENIDA) -->
+  <div id="trivia-pantalla-inicio">
+    <h3 style="color: #1b4332; margin-top: 0;">🎮 Desafío del Pacífico</h3>
+    <p style="color: #555; font-size: 0.95rem; line-height: 1.5; margin-bottom: 20px;">
+      Pon a prueba tus conocimientos sobre geografía, clima, biodiversidad y festivales de la Región Pacífica colombiana.<br>
+      Tienes <strong>25 segundos</strong> por pregunta. ¡Haz clic en el botón cuando estés listo!
+    </p>
+    <button class="btn-trivia-accion" onclick="iniciarTriviaCompleta()">🚀 Comenzar Desafío</button>
+  </div>
+
+  <!-- PANTALLA 2: JUEGO ACTIVO -->
+  <div id="trivia-pantalla-juego" class="trivia-pantalla-oculta">
+    <div class="trivia-encabezado">
+      <span class="trivia-badge" id="trivia-progreso">Pregunta 1/5</span>
+      <span class="trivia-reloj" id="trivia-tiempo">⏱️ 25s</span>
+    </div>
+
+    <div class="trivia-pregunta-texto" id="trivia-pregunta">Cargando desafío...</div>
+
+    <div class="trivia-grid-opciones" id="trivia-opciones"></div>
+
+    <div class="trivia-mensaje-feedback" id="trivia-feedback"></div>
+
+    <button class="btn-trivia-accion" id="btn-trivia-siguiente" style="display: none;" onclick="siguientePreguntaTrivia()">Siguiente Pregunta ➡️</button>
+  </div>
+
+  <!-- PANTALLA 3: RESULTADOS -->
+  <div id="trivia-pantalla-resultados" class="trivia-pantalla-oculta">
+    <h3 style="color: #1b4332;">🏆 ¡Desafío Completado!</h3>
+    <p style="color: #555;">Puntuación obtenida:</p>
+    <div class="puntaje-numero" id="trivia-puntaje-final">0 Pts</div>
+    <p id="trivia-evaluacion" style="color: #444; margin-bottom: 20px;"></p>
+    <button class="btn-trivia-accion" onclick="reiniciarTrivia()">🔄 Volver a Jugar</button>
+  </div>
+
+</div>
+
+<script>
+  (function() {
+    const listaPreguntas = [
+      {
+        q: "¿Cuál de estos municipios es considerado el segundo lugar más lluvioso del planeta?",
+        o: ["Buenaventura", "Lloró", "Tumaco", "Quibdó"],
+        a: 1
+      },
+      {
+        q: "¿Qué festividad fue declarada Patrimonio Cultural Inmaterial por la UNESCO en 2012?",
+        o: ["Festival Petronio Álvarez", "Fiestas de San Pacho", "Carnaval de Negros y Blancos", "Feria de Cali"],
+        a: 1
+      },
+      {
+        q: "¿Cuál es la especie venenosa endémica de las selvas húmedas del Pacífico?",
+        o: ["Rana Dardo Dorada", "Oso Hormiguero", "Jaguar", "Alcatraz de Nazca"],
+        a: 0
+      },
+      {
+        q: "¿Qué río es el más caudaloso de Sudamérica hacia la vertiente del Pacífico?",
+        o: ["Río Mira", "Río Dagua", "Río San Juan", "Río Anchicayá"],
+        a: 2
+      },
+      {
+        q: "¿En qué festival se compite en modalidades como Marimba, Chirimía y Violines Caucanos?",
+        o: ["Fiestas de San Pacho", "Festival Petronio Álvarez", "Festival de la Leyenda Vallenata", "Festival de la Cumbia"],
+        a: 1
+      }
+    ];
+
+    let idx = 0;
+    let pts = 0;
+    let timer = null;
+    let tRestante = 25; // Aumentado a 25 segundos
+    let contestado = false;
+
+    window.iniciarTriviaCompleta = function() {
+      document.getElementById("trivia-pantalla-inicio").classList.add("trivia-pantalla-oculta");
+      document.getElementById("trivia-pantalla-juego").classList.remove("trivia-pantalla-oculta");
+      cargarPregunta();
+    };
+
+    function cargarPregunta() {
+      contestado = false;
+      tRestante = 25;
+      document.getElementById("trivia-feedback").innerText = "";
+      document.getElementById("btn-trivia-siguiente").style.display = "none";
+      document.getElementById("trivia-progreso").innerText = `Pregunta ${idx + 1}/${listaPreguntas.length}`;
+      document.getElementById("trivia-tiempo").innerText = `⏱️ ${tRestante}s`;
+
+      const actual = listaPreguntas[idx];
+      document.getElementById("trivia-pregunta").innerText = actual.q;
+
+      const contOpciones = document.getElementById("trivia-opciones");
+      contOpciones.innerHTML = "";
+
+      actual.o.forEach((opc, i) => {
+        const btn = document.createElement("button");
+        btn.className = "btn-trivia-opcion";
+        btn.innerText = opc;
+        btn.onclick = function() { responder(i); };
+        contOpciones.appendChild(btn);
+      });
+
+      if (timer) clearInterval(timer);
+      timer = setInterval(function() {
+        tRestante--;
+        document.getElementById("trivia-tiempo").innerText = `⏱️ ${tRestante}s`;
+        if (tRestante <= 0) {
+          clearInterval(timer);
+          responder(-1);
+        }
+      }, 1000);
+    }
+
+    function responder(iSeleccionado) {
+      if (contestado) return;
+      contestado = true;
+      if (timer) clearInterval(timer);
+
+      const actual = listaPreguntas[idx];
+      const btns = document.querySelectorAll(".btn-trivia-opcion");
+
+      if (iSeleccionado === actual.a) {
+        pts += 100 + (tRestante * 2);
+        btns[iSeleccionado].classList.add("correcta");
+        document.getElementById("trivia-feedback").innerText = "🎉 ¡Correcto!";
+        document.getElementById("trivia-feedback").style.color = "#2b9348";
+      } else {
+        if (iSeleccionado !== -1 && btns[iSeleccionado]) {
+          btns[iSeleccionado].classList.add("incorrecta");
+        }
+        btns[actual.a].classList.add("correcta");
+        document.getElementById("trivia-feedback").innerText = iSeleccionado === -1 ? "⏰ ¡Tiempo agotado!" : "❌ Respuesta incorrecta";
+        document.getElementById("trivia-feedback").style.color = "#d90429";
+      }
+
+      btns.forEach(b => b.disabled = true);
+      document.getElementById("btn-trivia-siguiente").style.display = "inline-block";
+    }
+
+    window.siguientePreguntaTrivia = function() {
+      idx++;
+      if (idx < listaPreguntas.length) {
+        cargarPregunta();
+      } else {
+        document.getElementById("trivia-pantalla-juego").classList.add("trivia-pantalla-oculta");
+        document.getElementById("trivia-pantalla-resultados").classList.remove("trivia-pantalla-oculta");
+        document.getElementById("trivia-puntaje-final").innerText = `${pts} Pts`;
+
+        let evalTexto = "";
+        if (pts >= 500) evalTexto = "🌟 ¡Excelente! Dominas la geografía, biodiversidad y cultura de la Región Pacífica.";
+        else if (pts >= 300) evalTexto = "👍 ¡Muy bien! Tienes buenos conocimientos sobre la región.";
+        else evalTexto = "📚 ¡Sigue repasando la información de la página e inténtalo de nuevo!";
+        
+        document.getElementById("trivia-evaluacion").innerText = evalTexto;
+      }
+    };
+
+    window.reiniciarTrivia = function() {
+      idx = 0;
+      pts = 0;
+      document.getElementById("trivia-pantalla-resultados").classList.add("trivia-pantalla-oculta");
+      document.getElementById("trivia-pantalla-inicio").classList.remove("trivia-pantalla-oculta");
+    };
+  })();
+</script>
+<!-- FIN: DESAFÍO INTERACTIVO -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="color: var(--sand-gold);">ACTIVIDAD 2</h3>
+                <h4>DESCUBRE Y RELACIONA</h4>
+                <div class="embed-container">
+                    <div>
+                        <!-- INICIO: JUEGO 2 - DESCUBRIR Y RELACIONAR PACÍFICO -->
+<style>
+  .contenedor-juego-descubrir {
+    max-width: 650px;
+    margin: 25px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    border: 2px solid #005f73;
+  }
+
+  .descubrir-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e9ecef;
+  }
+
+  .descubrir-badge {
+    background: #0A9396;
+    color: #ffffff;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: bold;
+  }
+
+  .descubrir-reloj {
+    font-weight: bold;
+    color: #ae2012;
+    font-size: 1rem;
+  }
+
+  .descubrir-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 15px;
+  }
+
+  @media (max-width: 550px) {
+    .descubrir-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Tarjeta 3D Flip */
+  .tarjeta-descubrir {
+    background-color: transparent;
+    height: 90px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+
+  .tarjeta-descubrir-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  }
+
+  .tarjeta-descubrir.volteada .tarjeta-descubrir-inner {
+    transform: rotateY(180deg);
+  }
+
+  .tarjeta-cara-frontal, .tarjeta-cara-trasera {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    box-sizing: border-box;
+    font-size: 0.82rem;
+    font-weight: bold;
+  }
+
+  .tarjeta-cara-frontal {
+    background: linear-gradient(135deg, #0A9396, #005f73);
+    color: #ffffff;
+    font-size: 1.5rem;
+  }
+
+  .tarjeta-cara-trasera {
+    background: #E9D8A6;
+    color: #001219;
+    transform: rotateY(180deg);
+    border: 2px solid #0A9396;
+    line-height: 1.2;
+  }
+
+  .tarjeta-descubrir.emparejada .tarjeta-cara-trasera {
+    background: #94D2BD !important;
+    color: #005f73 !important;
+    border-color: #0A9396 !important;
+  }
+
+  .btn-descubrir-accion {
+    background: #005f73;
+    color: #ffffff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s ease;
+  }
+
+  .btn-descubrir-accion:hover {
+    background: #0A9396;
+  }
+
+  .descubrir-pantalla-oculta {
+    display: none;
+  }
+
+  .descubrir-puntaje {
+    font-size: 2.5rem;
+    color: #005f73;
+    margin: 10px 0;
+    font-weight: bold;
+  }
+</style>
+
+<div class="contenedor-juego-descubrir">
+  
+  <!-- PANTALLA 1: INICIO -->
+  <div id="descubrir-pantalla-inicio">
+    <h3 style="color: #005f73; margin-top: 0;">🔍 Juego 2: Descubre y Relaciona</h3>
+    <p style="color: #555; font-size: 0.95rem; line-height: 1.5; margin-bottom: 20px;">
+      Haz clic en las fichas para descubrirlas y encuentra las parejas entre conceptos y sus explicaciones.<br>
+      El tiempo comenzará cuando presiones el botón. Tienes <strong>60 segundos</strong>.
+    </p>
+    <button class="btn-descubrir-accion" onclick="iniciarJuegoDescubrir()">🚀 Comenzar Desafío</button>
+  </div>
+
+  <!-- PANTALLA 2: JUEGO ACTIVO -->
+  <div id="descubrir-pantalla-juego" class="descubrir-pantalla-oculta">
+    <div class="descubrir-encabezado">
+      <span class="descubrir-badge" id="descubrir-progreso">Parejas: 0/6</span>
+      <span class="descubrir-reloj" id="descubrir-tiempo">⏱️ 60s</span>
+    </div>
+
+    <div class="descubrir-grid" id="descubrir-contenedor-grid"></div>
+
+    <div id="descubrir-feedback" style="min-height: 25px; font-weight: bold; font-size: 0.95rem; margin-bottom: 10px;"></div>
+  </div>
+
+  <!-- PANTALLA 3: RESULTADOS -->
+  <div id="descubrir-pantalla-resultados" class="descubrir-pantalla-oculta">
+    <h3 style="color: #005f73;">🏆 ¡Partida Completada!</h3>
+    <p style="color: #555;">Puntuación total obtenida:</p>
+    <div class="descubrir-puntaje" id="descubrir-puntaje-final">0 Pts</div>
+    <p id="descubrir-evaluacion" style="color: #444; margin-bottom: 20px;"></p>
+    <button class="btn-descubrir-accion" onclick="reiniciarJuegoDescubrir()">🔄 Volver a Jugar</button>
+  </div>
+
+</div>
+
+<script>
+  (function() {
+    // DATOS TOTALMENTE NUEVOS Y DIFERENTES AL JUEGO 1
+    const paresExclusivos = [
+      { id: 101, texto: "La Piangua" },
+      { id: 101, texto: "Molusco comestible extraído de los manglares" },
+      { id: 102, texto: "El Currulao" },
+      { id: 102, texto: "Danza ancestral a ritmo de marimba y tambores" },
+      { id: 103, texto: "Isla Malpelo" },
+      { id: 103, texto: "Reserva marina famosa por avistamiento de tiburones" },
+      { id: 104, texto: "El Chontaduro" },
+      { id: 104, texto: "Fruto nutritivo consumido tradicionalmente con sal o miel" },
+      { id: 105, texto: "Bahía Solano" },
+      { id: 105, texto: "Lugar privilegiado para el avistamiento de ballenas" },
+      { id: 106, texto: "Arroz Atollado" },
+      { id: 106, texto: "Plato icónico elaborado con mariscos y leche de coco" }
+    ];
+
+    let primeraCarta = null;
+    let segundaCarta = null;
+    let aciertos = 0;
+    let tiempoRestante = 60;
+    let timerJuego = null;
+    let bloqueado = false;
+
+    window.iniciarJuegoDescubrir = function() {
+      document.getElementById("descubrir-pantalla-inicio").classList.add("descubrir-pantalla-oculta");
+      document.getElementById("descubrir-pantalla-juego").classList.remove("descubrir-pantalla-oculta");
+      prepararTablero();
+    };
+
+    function mezclar(array) {
+      return array.slice().sort(() => Math.random() - 0.5);
+    }
+
+    function prepararTablero() {
+      aciertos = 0;
+      tiempoRestante = 60;
+      primeraCarta = null;
+      segundaCarta = null;
+      bloqueado = false;
+
+      document.getElementById("descubrir-progreso").innerText = `Parejas: 0/${paresExclusivos.length / 2}`;
+      document.getElementById("descubrir-tiempo").innerText = `⏱️ ${tiempoRestante}s`;
+      document.getElementById("descubrir-feedback").innerText = "";
+
+      const cartasMezcladas = mezclar(paresExclusivos);
+      const grid = document.getElementById("descubrir-contenedor-grid");
+      grid.innerHTML = "";
+
+      cartasMezcladas.forEach((item) => {
+        const divTarjeta = document.createElement("div");
+        divTarjeta.className = "tarjeta-descubrir";
+        divTarjeta.dataset.idMatch = item.id;
+
+        divTarjeta.innerHTML = `
+          <div class="tarjeta-descubrir-inner">
+            <div class="tarjeta-cara-frontal">🌊</div>
+            <div class="tarjeta-cara-trasera">${item.texto}</div>
+          </div>
+        `;
+
+        divTarjeta.onclick = function() { voltearTarjeta(divTarjeta); };
+        grid.appendChild(divTarjeta);
+      });
+
+      if (timerJuego) clearInterval(timerJuego);
+      timerJuego = setInterval(function() {
+        tiempoRestante--;
+        document.getElementById("descubrir-tiempo").innerText = `⏱️ ${tiempoRestante}s`;
+        if (tiempoRestante <= 0) {
+          clearInterval(timerJuego);
+          finalizarJuegoDescubrir(false);
+        }
+      }, 1000);
+    }
+
+    function voltearTarjeta(tarjeta) {
+      if (bloqueado || tarjeta.classList.contains("volteada") || tarjeta.classList.contains("emparejada")) return;
+
+      tarjeta.classList.add("volteada");
+
+      if (!primeraCarta) {
+        primeraCarta = tarjeta;
+      } else {
+        segundaCarta = tarjeta;
+        comprobarCoincidencia();
+      }
+    }
+
+    function comprobarCoincidencia() {
+      bloqueado = true;
+      const esPareja = primeraCarta.dataset.idMatch === segundaCarta.dataset.idMatch;
+
+      if (esPareja) {
+        primeraCarta.classList.add("emparejada");
+        segundaCarta.classList.add("emparejada");
+
+        aciertos++;
+        document.getElementById("descubrir-progreso").innerText = `Parejas: ${aciertos}/${paresExclusivos.length / 2}`;
+        document.getElementById("descubrir-feedback").innerText = "✨ ¡Excelente! Pareja descubierta";
+        document.getElementById("descubrir-feedback").style.color = "#0A9396";
+
+        resetSeleccion();
+
+        if (aciertos === paresExclusivos.length / 2) {
+          clearInterval(timerJuego);
+          setTimeout(() => finalizarJuegoDescubrir(true), 600);
+        }
+      } else {
+        document.getElementById("descubrir-feedback").innerText = "❌ No coinciden, intenta de nuevo";
+        document.getElementById("descubrir-feedback").style.color = "#ae2012";
+
+        setTimeout(() => {
+          primeraCarta.classList.remove("volteada");
+          segundaCarta.classList.remove("volteada");
+          resetSeleccion();
+        }, 1100);
+      }
+    }
+
+    function resetSeleccion() {
+      primeraCarta = null;
+      segundaCarta = null;
+      bloqueado = false;
+    }
+
+    function finalizarJuegoDescubrir(ganado) {
+      document.getElementById("descubrir-pantalla-juego").classList.add("descubrir-pantalla-oculta");
+      document.getElementById("descubrir-pantalla-resultados").classList.remove("descubrir-pantalla-oculta");
+
+      const puntajeFinal = ganado ? (aciertos * 100) + (tiempoRestante * 5) : aciertos * 40;
+      document.getElementById("descubrir-puntaje-final").innerText = `${puntajeFinal} Pts`;
+
+      let mensajeFinal = "";
+      if (ganado) {
+        mensajeFinal = `🎉 ¡Increíble! Descubriste todas las parejas con ${tiempoRestante} segundos de sobra.`;
+      } else {
+        mensajeFinal = `⏰ ¡Tiempo agotado! Lograste encontrar ${aciertos} de ${paresExclusivos.length / 2} parejas.`;
+      }
+      document.getElementById("descubrir-evaluacion").innerText = mensajeFinal;
+    }
+
+    window.reiniciarJuegoDescubrir = function() {
+      document.getElementById("descubrir-pantalla-resultados").classList.add("descubrir-pantalla-oculta");
+      document.getElementById("descubrir-pantalla-inicio").classList.remove("descubrir-pantalla-oculta");
+    };
+  })();
+</script>
+<!-- FIN: JUEGO 2 -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="color: var(--sand-gold);">ACTIVIDAD 3</h3>
+                <h4>DESAFÍO FINAL</h4>
+                <div class="embed-container">
+                    <div>
+                         <!-- INICIO: ESCAPE ROOM DIGITAL - MISTERIOS DEL PACÍFICO -->
+<style>
+  .escape-root {
+    --bg-dark: #0d1b2a;
+    --panel-bg: #1b263b;
+    --accent-gold: #e0a96d;
+    --accent-green: #52b788;
+    --accent-red: #e63946;
+    --text-light: #e0e1dd;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    max-width: 750px;
+    margin: 20px auto;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    overflow: hidden;
+    border: 2px solid var(--accent-gold);
+  }
+
+  .escape-header {
+    background: #0d131a;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--accent-gold);
+  }
+
+  .escape-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--accent-gold);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .escape-timer {
+    font-size: 1.2rem;
+    font-family: monospace;
+    font-weight: bold;
+    color: var(--accent-red);
+    background: rgba(230, 57, 70, 0.15);
+    padding: 4px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--accent-red);
+  }
+
+  .escape-body {
+    padding: 25px;
+  }
+
+  .escape-hud {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.3);
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+  }
+
+  .inventory-slots {
+    display: flex;
+    gap: 10px;
+  }
+
+  .slot {
+    width: 32px;
+    height: 32px;
+    background: var(--panel-bg);
+    border: 1px dashed var(--accent-gold);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  .escape-card {
+    background: var(--panel-bg);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(224, 169, 109, 0.2);
+  }
+
+  .escape-card h3 {
+    color: var(--accent-gold);
+    margin-top: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 8px;
+  }
+
+  .escape-btn {
+    background: var(--accent-gold);
+    color: #000;
+    border: none;
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+  }
+
+  .escape-btn:hover {
+    background: #f4a261;
+    transform: translateY(-2px);
+  }
+
+  .escape-input {
+    background: #0d131a;
+    border: 2px solid var(--accent-gold);
+    color: #fff;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    text-align: center;
+    width: 160px;
+    margin-right: 10px;
+  }
+
+  .marimba-pad {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .marimba-key {
+    background: #415a77;
+    color: #fff;
+    border: 2px solid var(--accent-gold);
+    width: 60px;
+    height: 90px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 10px;
+    transition: transform 0.1s, background 0.1s;
+  }
+
+  .marimba-key:active {
+    transform: scale(0.95);
+    background: var(--accent-gold);
+    color: #000;
+  }
+
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+  }
+
+  .modal-content {
+    background: #1b263b;
+    border: 2px solid var(--accent-gold);
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 450px;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+  }
+
+  .hidden { display: none !important; }
+</style>
+
+<div class="escape-root">
+  <!-- ENCABEZADO -->
+  <div class="escape-header">
+    <div class="escape-title">📜 Escape Room: Misterios del Pacífico</div>
+    <div class="escape-timer" id="esc-timer">10:00</div>
+  </div>
+
+  <div class="escape-body">
+    <!-- HUD DE INVENTARIO -->
+    <div class="escape-hud">
+      <span><strong>Progreso:</strong> <span id="esc-room-idx">1</span>/4 Habitación</span>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span>Amuletos:</span>
+        <div class="inventory-slots">
+          <div class="slot" id="slot-1">❓</div>
+          <div class="slot" id="slot-2">❓</div>
+          <div class="slot" id="slot-3">❓</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANTALLA INICIO -->
+    <div id="esc-screen-intro">
+      <div class="escape-card" style="text-align: center;">
+        <h2 style="color: var(--accent-gold);">🏛️ Atrapado en la Selva del Pacífico</h2>
+        <p style="line-height: 1.6; color: #ccc;">
+          Te has adentrado en un antiguo templo escondido en la costa pacífica colombiana. Las puertas se han sellado. Para escapar debéis descifrar los acertijos de las 4 cámaras ancestrales.
+        </p>
+        <p style="color: var(--accent-red); font-weight: bold;">⏱️ Tienes 10 minutos antes de que la marea selle el lugar por completo.</p>
+        <button class="escape-btn" onclick="EscapeGame.start()">🔑 Comenzar la Huida</button>
+      </div>
+    </div>
+
+    <!-- HABITACIÓN 1 -->
+    <div id="esc-screen-room1" class="hidden">
+      <div class="escape-card">
+        <h3>Habitación 1: La Cueva del Viche Ancestral</h3>
+        <p>Una gran puerta de madera con un cerrojo con combinación alfabética bloquea el paso. Al lado hay un pergamino viejo.</p>
+        
+        <button class="escape-btn" style="background: #415a77; color: #fff; margin-bottom: 15px;" onclick="EscapeGame.openModal('pista1')">📜 Inspeccionar Pergamino</button>
+        
+        <div style="margin-top: 15px;">
+          <label style="display: block; margin-bottom: 5px;">Introduce la palabra clave (5 Letras):</label>
+          <input type="text" id="code-room1" class="escape-input" maxlength="5" style="text-transform: uppercase;">
+          <button class="escape-btn" onclick="EscapeGame.checkRoom1()">Desbloquear</button>
+        </div>
+        <div id="feedback-r1" style="margin-top: 10px; font-weight: bold;"></div>
+      </div>
+    </div>
+
+    <!-- HABITACIÓN 2 -->
+    <div id="esc-screen-room2" class="hidden">
+      <div class="escape-card">
+        <h3>Habitación 2: El Altar de la Marimba</h3>
+        <p>Para abrir esta cerradura mística debéis tocar la **Melodía del Sol** en la marimba de chonta siguiendo el patrón correcto.</p>
+
+        <button class="escape-btn" style="background: #415a77; color: #fff; margin-bottom: 15px;" onclick="EscapeGame.openModal('pista2')">📜 Ver Grabado Ancestral</button>
+
+        <div class="marimba-pad">
+          <div class="marimba-key" onclick="EscapeGame.pressMarimba('DO')">DO</div>
+          <div class="marimba-key" onclick="EscapeGame.pressMarimba('MI')">MI</div>
+          <div class="marimba-key" onclick="EscapeGame.pressMarimba('SOL')">SOL</div>
+          <div class="marimba-key" onclick="EscapeGame.pressMarimba('LA')">LA</div>
+        </div>
+        <p>Notas tocadas: <span id="marimba-sequence" style="font-family: monospace; color: var(--accent-gold);">---</span></p>
+        <button class="escape-btn" onclick="EscapeGame.checkRoom2()">Probar Melodía</button>
+        <div id="feedback-r2" style="margin-top: 10px; font-weight: bold;"></div>
+      </div>
+    </div>
+
+    <!-- HABITACIÓN 3 -->
+    <div id="esc-screen-room3" class="hidden">
+      <div class="escape-card">
+        <h3>Habitación 3: La Reserva del Santuario</h3>
+        <p>Un cofre cerrado contiene la tercera llave. Un relieve en la piedra muestra los animales totémicos de la región.</p>
+        
+        <button class="escape-btn" style="background: #415a77; color: #fff; margin-bottom: 15px;" onclick="EscapeGame.openModal('pista3')">📜 Inspeccionar Jeroglífico</button>
+
+        <div style="margin-top: 15px;">
+          <label style="display: block; margin-bottom: 5px;">Código numérico (3 dígitos):</label>
+          <input type="number" id="code-room3" class="escape-input" maxlength="3">
+          <button class="escape-btn" onclick="EscapeGame.checkRoom3()">Abrir Cofre</button>
+        </div>
+        <div id="feedback-r3" style="margin-top: 10px; font-weight: bold;"></div>
+      </div>
+    </div>
+
+    <!-- HABITACIÓN 4 -->
+    <div id="esc-screen-room4" class="hidden">
+      <div class="escape-card">
+        <h3>Habitación 4: La Cripta de La Tunda</h3>
+        <p>Estás ante la última puerta de salida. La Tunda exige resolver su acertijo final para liberarte.</p>
+        
+        <div style="background: #0d131a; padding: 15px; border-left: 4px solid var(--accent-gold); margin: 15px 0;">
+          <em>"Soy el gigante azul que baña tus costas, caigo del cielo más que en cualquier parte del mundo, y alimento a los ríos caudalosos como el San Juan. ¿Qué soy?"</em>
+        </div>
+
+        <div style="margin-top: 15px;">
+          <input type="text" id="code-room4" class="escape-input" style="width: 200px; text-transform: uppercase;" placeholder="Respuesta...">
+          <button class="escape-btn" onclick="EscapeGame.checkRoom4()">Escape Final</button>
+        </div>
+        <div id="feedback-r4" style="margin-top: 10px; font-weight: bold;"></div>
+      </div>
+    </div>
+
+    <!-- PANTALLA VICTORIA -->
+    <div id="esc-screen-win" class="hidden">
+      <div class="escape-card" style="text-align: center;">
+        <h2 style="color: var(--accent-green);">🎉 ¡HAS ESCAPADO CON ÉXITO!</h2>
+        <p>Lograste resolver todos los enigmas del Pacífico colombiano antes de que la marea cerrara el templo.</p>
+        <p style="font-size: 1.2rem; color: var(--accent-gold);">Tiempo Restante: <span id="win-time">00:00</span></p>
+        <button class="escape-btn" onclick="location.reload()">🔄 Jugar de Nuevo</button>
+      </div>
+    </div>
+
+    <!-- PANTALLA GAME OVER -->
+    <div id="esc-screen-lose" class="hidden">
+      <div class="escape-card" style="text-align: center;">
+        <h2 style="color: var(--accent-red);">⏰ ¡TIEMPO AGOTADO!</h2>
+        <p>El templo se ha sellado. Quedaste atrapado en los secretos de la selva.</p>
+        <button class="escape-btn" onclick="location.reload()">🔄 Reintentar Escape</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE PISTAS -->
+<div id="esc-modal" class="modal-overlay hidden">
+  <div class="modal-content">
+    <h3 id="modal-title" style="color: var(--accent-gold);">Pista</h3>
+    <p id="modal-text" style="line-height: 1.5; color: #ddd;"></p>
+    <button class="escape-btn" onclick="EscapeGame.closeModal()">Cerrar Pista</button>
+  </div>
+</div>
+
+<script>
+const EscapeGame = (function() {
+  let timeLeft = 600; // 10 Minutos
+  let timerInterval = null;
+  let marimbaInput = [];
+  
+  // Audio sintetizado mediante Web Audio API
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  
+  function playSound(freq, type = 'sine', duration = 0.2) {
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + duration);
+  }
+
+  const tracks = {
+    'DO': 261.63,
+    'MI': 329.63,
+    'SOL': 392.00,
+    'LA': 440.00
+  };
+
+  const pistas = {
+    pista1: "El pergamino dice: 'El elixir sagrado extraído de la caña que sana el alma se llama... (5 Letras)'.",
+    pista2: "El grabado muestra las notas de la melodía sagrada: primero la base (DO), asciende a la cumbre (SOL), baja al centro (MI) y culmina en lo alto (LA).",
+    pista3: "Cuenta las siluetas en la piedra: 2 Ballenas Jorobadas, 4 Ranas Doradas y 1 Tiburón Ballena."
+  };
+
+  function updateTimerUI() {
+    const mins = Math.floor(timeLeft / 60);
+    const secs = timeLeft % 60;
+    document.getElementById('esc-timer').innerText = 
+      `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  }
+
+  return {
+    start: function() {
+      document.getElementById('esc-screen-intro').classList.add('hidden');
+      document.getElementById('esc-screen-room1').classList.remove('hidden');
+      
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimerUI();
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          document.querySelectorAll('.escape-body > div').forEach(d => d.classList.add('hidden'));
+          document.getElementById('esc-screen-lose').classList.remove('hidden');
+        }
+      }, 1000);
+    },
+
+    openModal: function(key) {
+      document.getElementById('modal-text').innerText = pistas[key];
+      document.getElementById('esc-modal').classList.remove('hidden');
+      playSound(523.25, 'triangle', 0.1);
+    },
+
+    closeModal: function() {
+      document.getElementById('esc-modal').classList.add('hidden');
+    },
+
+    checkRoom1: function() {
+      const val = document.getElementById('code-room1').value.trim().toUpperCase();
+      const fb = document.getElementById('feedback-r1');
+      if (val === "VICHE") {
+        playSound(659.25, 'sine', 0.3);
+        fb.style.color = "var(--accent-green)";
+        fb.innerText = "¡Correcto! El cerrojo se abre.";
+        document.getElementById('slot-1').innerText = "🧪";
+        setTimeout(() => {
+          document.getElementById('esc-screen-room1').classList.add('hidden');
+          document.getElementById('esc-screen-room2').classList.remove('hidden');
+          document.getElementById('esc-room-idx').innerText = "2";
+        }, 1000);
+      } else {
+        playSound(150, 'sawtooth', 0.3);
+        fb.style.color = "var(--accent-red)";
+        fb.innerText = "🔒 Palabra incorrecta.";
+      }
+    },
+
+    pressMarimba: function(note) {
+      marimbaInput.push(note);
+      if (marimbaInput.length > 4) marimbaInput.shift();
+      playSound(tracks[note], 'sine', 0.4);
+      document.getElementById('marimba-sequence').innerText = marimbaInput.join(' - ');
+    },
+
+    checkRoom2: function() {
+      const target = ['DO', 'SOL', 'MI', 'LA'];
+      const fb = document.getElementById('feedback-r2');
+      const isCorrect = marimbaInput.length === 4 && marimbaInput.every((v, i) => v === target[i]);
+
+      if (isCorrect) {
+        playSound(783.99, 'sine', 0.4);
+        fb.style.color = "var(--accent-green)";
+        fb.innerText = "¡La melodía resuena y la puerta se eleva!";
+        document.getElementById('slot-2').innerText = "🎵";
+        setTimeout(() => {
+          document.getElementById('esc-screen-room2').classList.add('hidden');
+          document.getElementById('esc-screen-room3').classList.remove('hidden');
+          document.getElementById('esc-room-idx').innerText = "3";
+        }, 1000);
+      } else {
+        playSound(130, 'sawtooth', 0.3);
+        fb.style.color = "var(--accent-red)";
+        fb.innerText = "❌ Secuencia incorrecta. Reinicia la melodía.";
+        marimbaInput = [];
+        document.getElementById('marimba-sequence').innerText = "---";
+      }
+    },
+
+    checkRoom3: function() {
+      const val = document.getElementById('code-room3').value.trim();
+      const fb = document.getElementById('feedback-r3');
+      if (val === "241") {
+        playSound(659.25, 'sine', 0.3);
+        fb.style.color = "var(--accent-green)";
+        fb.innerText = "¡Cofre abierto! Obtienes el amuleto final.";
+        document.getElementById('slot-3').innerText = "🐋";
+        setTimeout(() => {
+          document.getElementById('esc-screen-room3').classList.add('hidden');
+          document.getElementById('esc-screen-room4').classList.remove('hidden');
+          document.getElementById('esc-room-idx').innerText = "4";
+        }, 1000);
+      } else {
+        playSound(150, 'sawtooth', 0.3);
+        fb.style.color = "var(--accent-red)";
+        fb.innerText = "🔒 Código incorrecto.";
+      }
+    },
+
+    checkRoom4: function() {
+      const val = document.getElementById('code-room4').value.trim().toUpperCase();
+      const fb = document.getElementById('feedback-r4');
+      if (val === "LLUVIA" || val === "AGUA" || val === "LA LLUVIA") {
+        clearInterval(timerInterval);
+        playSound(880, 'sine', 0.5);
+        document.getElementById('win-time').innerText = document.getElementById('esc-timer').innerText;
+        document.getElementById('esc-screen-room4').classList.add('hidden');
+        document.getElementById('esc-screen-win').classList.remove('hidden');
+      } else {
+        playSound(150, 'sawtooth', 0.3);
+        fb.style.color = "var(--accent-red)";
+        fb.innerText = "❌ La Tunda rechaza tu respuesta.";
+      }
+    }
+  };
+})();
+</script>
+<!-- FIN: ESCAPE ROOM DIGITAL -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 10: PARA SEGUIR EXPLORANDO -->
+    <section id="explorando">
+        <h2 class="section-title">EL VIAJE NO TERMINA AQUÍ</h2>
+        <p class="section-subtitle">Enlaces Externos Confiables y Recursos Adicionales</p>
+
+        <div class="grid-cards">
+            <div class="card">
+                <h4>DANE (Departamento Administrativo Nacional de Estadística)</h4>
+                <div class="editable-placeholder"><label>Información sobre población, distribución territorial y características demográficas de la Región Pacífica.</label></div>
+                <a href="DANE – Población en la región del Pacífico⁠" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Visitar Página</a>
+            </div>
+
+            <div class="card">
+                <h4>Instituto Geográfico Agustín Codazzi (IGAC)</h4>
+                <div class="editable-placeholder"><label>Información geográfica, cartográfica y territorial de Colombia, útil para conocer el territorio y los mapas de la Región Pacífica.</label></div>
+                <a href="IGAC – Instituto Geográfico Agustín Codazzi⁠" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Visitar Página</a>
+            </div>
+
+            <div class="card">
+                <h4>Parques Nacionales Naturales de Colombia</h4>
+                <div class="editable-placeholder"><label>Información sobre las áreas protegidas de la región, como Gorgona, Utría, Sanquianga, Los Katíos, Farallones de Cali y Uramba Bahía Málaga.</label></div>
+                <a href="Parques Nacionales Naturales – Región Pacífico⁠" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Visitar Página</a>
+            </div>
+
+            <div class="card">
+                <h4>Ministerio de Ambiente y Desarrollo Sostenible</h4>
+                <div class="editable-placeholder"><label>Información oficial sobre conservación, biodiversidad, ecosistemas y protección ambiental en Colombia y el Pacífico.</label></div>
+                <a href="Ministerio de Ambiente y Desarrollo Sostenible" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Visitar Página</a>
+            </div>
+
+            <div class="card">
+                <h4>Ministerio de Cultura / Instituciones Aliadas</h4>
+                <div class="editable-placeholder"><label>Institución dedicada a la investigación científica y ambiental del Pacífico colombiano, especialmente en temas de biodiversidad, territorio y comunidades.</label></div>
+                <a href="IIAP – Instituto de Investigaciones Ambientales del Pacífico" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Visitar Página</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 11: FUENTES CONSULTADAS -->
+    <section id="fuentes">
+        <h2 class="section-title">DETRÁS DE CADA DATO, UNA FUENTE</h2>
+        <p class="section-subtitle">Bibliografía, Créditos y Rigor Académico</p>
+
+        <div class="card">
+            <div class="editable-placeholder">
+                <label>[Registro de Fuentes Consultadas - Normas APA / Institucionales]</label>
+                <a href="https://es.wikipedia.org/wiki/Regi%C3%B3n_del_Pac%C3%ADfico_(Colomb ia) ">WIKIPEDIA,  </a>
+                <a href="https://www.lifeder.com/caracteristicas-region-pacifica/">LIDEFER,  </a>
+                <a href="https://pacificotaskforce.com/biodiversidad-del-pacifico-colombiano/">PACIFICO TAKSFORCE</a>
+                <a href="https://prezi.com/p/l78au-dgpsta/ecosistemas-del-pacifico-colombianomanglares-y-playas/ ">PREZI</a>
+                <a href="https://ecologiaverde.elperiodico.com/flora-y-fauna-de-la-regionpacifica-2976.html">ECOLOGIA VERDE</a>
+                <a href="https://colombiaverde.com.co/geografia/regiones-naturales/animales-enpeligro-de-extincion-en-la-region-pacifica/">VERDE.CO.COM</a>
+                <a href="Banco de la República – Economías del Pacífico colombiano⁠￼">BANCO DE LA REPUBLICA</a>
+                <a href="DANE – Cuentas nacionales departamentales⁠￼">DANE</a>
+            </div>
+            
+            <div style="background: rgba(244, 162, 97, 0.1); border-left: 4px solid var(--sand-gold); padding: 1rem; border-radius: 4px; margin-top: 1rem;">
+                <p style="font-size: 0.85rem; color: var(--sand-gold);">
+                    <strong>NOTA ACADÉMICA:</strong> Toda la información presentada en esta página debe estar debidamente parafraseada por los estudiantes, respetando los derechos de autor y reconociendo los créditos correspondientes a las imágenes, mapas, videos y herramientas externas utilizadas.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN FINAL Y CONCLUSIÓN -->
+    <section id="conclusion" style="text-align: center;">
+        <h2 class="section-title">¿QUÉ PODEMOS APRENDER DEL PACÍFICO?</h2>
+        
+        <div class="card" style="margin: 2rem 0; text-align: left;">
+            <div class="editable-placeholder">
+                <label>Síntesis y Conclusión del Grupo</label>
+                <p>El recorrido por la Región Pacífica nos deja una lección ineludible: su mayor riqueza y su más grande desafío conviven en un mismo espacio. Mientras el folclor, la biodiversidad y la resiliencia de su gente demuestran un potencial humano incomparable, la falta de inversión estatal y el aislamiento continúan perpetuando una brecha histórica que no se puede seguir ignorando. Comprender el Pacífico va más allá de reconocer sus problemáticas; exige asumir una responsabilidad colectiva para transformar el abandono institucional en oportunidades reales de desarrollo.</p>
+            </div>
+            <div class="editable-placeholder" style="margin-top: 1rem;">
+                <label>Frase Final Editable del Proyecto</label>
+                <p style="font-style: italic; font-weight: bold; color: var(--ocean-turquoise);">"El futuro del Pacífico no depende de que se le asista como a una periferia olvidada, sino de que se le reconozca como el corazón cultural y ecológico que sostiene la verdadera identidad de Colombia."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER INSTITUCIONAL -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h4 style="color: var(--ocean-turquoise); margin-bottom: 0.5rem;">PROYECTO ESCOLAR</h4>
+                <p>“Colombia en la Web: Explorando nuestras regiones naturales”</p>
+                <p>Región Pacífica de Colombia</p>
+            </div>
+            <div>
+                <h4 style="color: var(--ocean-turquoise); margin-bottom: 0.5rem;">INFORMACIÓN ACADÉMICA</h4>
+                <p>Grado 11-02 - Ciencias Sociales</p>
+                <p>Año Lectivo: 2026</p>
+            </div>
+            <div>
+                <h4 style="color: var(--ocean-turquoise); margin-bottom: 0.5rem;">ESTUDIANTES Y CRÉDITOS</h4>
+                <p>Emmanuel, Keren, Violeta, Cristina, Dayana, Javid y Andrés</p>
+            </div>
+        </div>
+        <hr style="border: 0; border-top: 1px solid var(--border-glow); margin-bottom: 1.5rem;">
+        <p>&copy; 2026 Proyecto Educativo Digital. Todos los derechos reservados a los estudiantes creadores.</p>
+    </footer>
+
+</body>
+</html>
